@@ -1,0 +1,26 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+plugins {
+    id 'com.android.application' version '8.9.2' apply false
+    id 'com.android.library' version '8.9.2' apply false
+    // Добавьте другие плагины здесь при необходимости
+    id 'com.google.gms.google-services' version '4.4.1' apply false
+    id 'androidx.navigation.safeargs' version '2.7.7' apply false
+}
+
+// Блок buildscript больше не нужен для AGP 8+ и classpath зависимостей плагинов
+/*
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        def nav_version = "2.7.7"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+*/ 

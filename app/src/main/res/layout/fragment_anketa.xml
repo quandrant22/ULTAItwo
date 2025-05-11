@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1C191A"
+    tools:context=".anketa.AnketaFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp">
+
+        <!-- Фон блока вопросов (теперь 9-patch shapka.9.png) -->
+        <View
+            android:id="@+id/formBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/shapka" 
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/anketaSubtitleTextView" />
+
+        <!-- Заголовок -->
+        <TextView
+            android:id="@+id/anketaTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Регистрационная анкета"
+            android:textColor="@color/beige"
+            android:textSize="24sp"
+            android:fontFamily="@font/exo2_0_bold"
+            app:layout_constraintStart_toStartOf="@id/formBackground"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/anketaSubtitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+            android:text="Пожалуйста, пройдите анкету"
+            android:textColor="@color/beige"
+            android:textSize="16sp"
+             android:fontFamily="@font/exo2_0_light"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/anketaTitleTextView" />
+
+        <!-- Блок с вопросами -->
+
+        <!-- Вопрос 1 -->
+         <TextView
+            android:id="@+id/q1LabelTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="1. Напишите название Вашей компании"
+            android:textColor="@color/beige"
+            android:textSize="16sp"
+             android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toTopOf="@id/formBackground"
+            app:layout_constraintStart_toStartOf="@id/formBackground"
+            app:layout_constraintEnd_toEndOf="@id/formBackground"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+             android:id="@+id/companyNameInputLayout"
+             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="8dp"
+             android:layout_marginStart="16dp"
+             android:layout_marginEnd="16dp"
+             android:textColorHint="#8D8D8D"
+             android:background="@drawable/plashka3"
+             app:boxStrokeWidth="0dp"
+             app:boxCornerRadiusTopStart="8dp"
+             app:boxCornerRadiusTopEnd="8dp"
+             app:boxCornerRadiusBottomStart="8dp"
+             app:boxCornerRadiusBottomEnd="8dp"
+             app:layout_constraintTop_toBottomOf="@id/q1LabelTextView"
+             app:layout_constraintStart_toStartOf="@id/formBackground"
+             app:layout_constraintEnd_toEndOf="@id/formBackground">
+
+             <com.google.android.material.textfield.TextInputEditText
+                 android:id="@+id/companyNameEditText"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:hint="Заполните поле"
+                 android:textColor="@color/white"
+                 android:inputType="textCapWords"/>
+         </com.google.android.material.textfield.TextInputLayout>
+         
+        <!-- Вопрос 2 -->
+        <TextView
+            android:id="@+id/q2LabelTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="2. Какое текущее состояние Вашего бизнеса?"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+             android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toBottomOf="@id/companyNameInputLayout"
+            app:layout_constraintStart_toStartOf="@id/formBackground"
+            app:layout_constraintEnd_toEndOf="@id/formBackground"/>
+
+        <RadioGroup
+            android:id="@+id/businessStatusRadioGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toBottomOf="@id/q2LabelTextView"
+            app:layout_constraintStart_toStartOf="@id/formBackground"
+            app:layout_constraintEnd_toEndOf="@id/formBackground">
+
+            <RadioButton
+                android:id="@+id/statusPlanningRadioButton"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Планирую запустить"
+                android:background="@drawable/plashka3"
+                android:textColor="@color/yellow"
+                android:button="@android:color/transparent" 
+                android:gravity="center"
+                android:padding="10dp"
+                 android:fontFamily="@font/exo2_0_light"
+                 android:layout_marginEnd="4dp"/>
+
+            <RadioButton
+                android:id="@+id/statusLaunchedRadioButton"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Уже запущен"
+                android:background="@drawable/plashka3"
+                android:textColor="@color/yellow"
+                android:button="@android:color/transparent"
+                android:gravity="center"
+                android:padding="10dp"
+                 android:fontFamily="@font/exo2_0_light"
+                android:layout_marginStart="4dp"/>
+        </RadioGroup>
+
+        <!-- Вопрос 3 -->
+        <TextView
+            android:id="@+id/q3LabelTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="3. Выберите страну"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toBottomOf="@id/businessStatusRadioGroup"
+            app:layout_constraintStart_toStartOf="@id/formBackground"
+            app:layout_constraintEnd_toEndOf="@id/formBackground"/>
+
+        <Spinner
+            android:id="@+id/countrySpinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/spinner_background" 
+            android:popupBackground="@color/gray" 
+            android:padding="12dp"
+             style="@style/Widget.AppCompat.Spinner.DropDown"
+            app:layout_constraintTop_toBottomOf="@id/q3LabelTextView"
+            app:layout_constraintStart_toStartOf="@id/formBackground"
+            app:layout_constraintEnd_toEndOf="@id/formBackground" />
+            
+         <!-- Вопрос 4 -->
+         <TextView
+            android:id="@+id/q4LabelTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="4. Выберите тип Вашей деятельности"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toBottomOf="@id/countrySpinner"
+            app:layout_constraintStart_toStartOf="@id/formBackground"
+            app:layout_constraintEnd_toEndOf="@id/formBackground"/>
+
+        <RadioGroup
+            android:id="@+id/businessTypeRadioGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toBottomOf="@id/q4LabelTextView"
+            app:layout_constraintStart_toStartOf="@id/formBackground"
+            app:layout_constraintEnd_toEndOf="@id/formBackground">
+
+            <RadioButton
+                android:id="@+id/typeGoodsRadioButton"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Товары"
+                android:background="@drawable/plashka3"
+                android:textColor="@color/yellow"
+                android:button="@android:color/transparent"
+                android:gravity="center"
+                android:padding="10dp"
+                 android:fontFamily="@font/exo2_0_light"
+                 android:layout_marginEnd="4dp"/>
+
+            <RadioButton
+                android:id="@+id/typeServicesRadioButton"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Услуги"
+                android:background="@drawable/plashka3"
+                android:textColor="@color/yellow"
+                android:button="@android:color/transparent"
+                android:gravity="center"
+                android:padding="10dp"
+                 android:fontFamily="@font/exo2_0_light"
+                android:layout_marginStart="4dp"/>
+        </RadioGroup>
+        
+        <!-- Вопрос 5 -->
+        <TextView
+            android:id="@+id/q5LabelTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="5. Перечислите весь комплекс Ваших услуг/товаров"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toBottomOf="@id/businessTypeRadioGroup"
+            app:layout_constraintStart_toStartOf="@id/formBackground"
+            app:layout_constraintEnd_toEndOf="@id/formBackground"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+             android:id="@+id/servicesInputLayout"
+             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="8dp"
+             android:layout_marginStart="16dp"
+             android:layout_marginEnd="16dp"
+             android:textColorHint="@color/light_gray"
+             app:boxBackgroundColor="@color/gray"
+             app:boxStrokeWidth="0dp"
+             app:boxCornerRadiusTopStart="8dp"
+             app:boxCornerRadiusTopEnd="8dp"
+             app:boxCornerRadiusBottomStart="8dp"
+             app:boxCornerRadiusBottomEnd="8dp"
+             app:layout_constraintTop_toBottomOf="@id/q5LabelTextView"
+             app:layout_constraintStart_toStartOf="@id/formBackground"
+             app:layout_constraintEnd_toEndOf="@id/formBackground">
+
+             <com.google.android.material.textfield.TextInputEditText
+                 android:id="@+id/servicesEditText"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:hint="Заполните поле"
+                 android:textColor="@color/white"
+                 android:inputType="textMultiLine"
+                 android:minLines="3"
+                 android:gravity="top"/>
+         </com.google.android.material.textfield.TextInputLayout>
+         
+        <!-- Вопрос 6 -->
+        <TextView
+            android:id="@+id/q6LabelTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="6. Укажите географию Вашей реализации"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toBottomOf="@id/servicesInputLayout"
+            app:layout_constraintStart_toStartOf="@id/formBackground"
+            app:layout_constraintEnd_toEndOf="@id/formBackground"/>
+
+        <Spinner
+            android:id="@+id/geoCountrySpinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/spinner_background"
+            android:popupBackground="@color/gray"
+            android:padding="12dp"
+            style="@style/Widget.AppCompat.Spinner.DropDown"
+            app:layout_constraintTop_toBottomOf="@id/q6LabelTextView"
+            app:layout_constraintStart_toStartOf="@id/formBackground"
+            app:layout_constraintEnd_toEndOf="@id/formBackground" />
+
+        <Spinner
+            android:id="@+id/geoCitySpinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/spinner_background"
+            android:popupBackground="@color/gray"
+            android:padding="12dp"
+             style="@style/Widget.AppCompat.Spinner.DropDown"
+            app:layout_constraintTop_toBottomOf="@id/geoCountrySpinner"
+            app:layout_constraintStart_toStartOf="@id/formBackground"
+            app:layout_constraintEnd_toEndOf="@id/formBackground" />
+
+        <!-- Кнопка Завершить -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/submitButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Завершить"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:fontFamily="@font/exo2_0_bold"
+            android:background="@drawable/anketa_button_background" 
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp" 
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toBottomOf="@id/geoCitySpinner"
+            app:layout_constraintBottom_toBottomOf="@id/formBackground" 
+            app:layout_constraintStart_toStartOf="@id/formBackground"
+            app:layout_constraintEnd_toEndOf="@id/formBackground" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

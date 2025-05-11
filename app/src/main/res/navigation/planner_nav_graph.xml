@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/planner_nav_graph"
+    app:startDestination="@id/businessGoalFragment">
+
+    <fragment
+        android:id="@+id/businessGoalFragment"
+        android:name="com.example.ultai.planner_questionnaire.BusinessGoalFragment"
+        android:label="fragment_planner_business_goal"
+        tools:layout="@layout/fragment_planner_business_goal">
+        <action
+            android:id="@+id/action_businessGoalFragment_to_salesAnalysisFragment"
+            app:destination="@id/salesAnalysisFragment" />
+        <action
+            android:id="@+id/action_businessGoalFragment_to_ultaiFragment2"
+            app:destination="@id/ultaiFragment2" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salesAnalysisFragment"
+        android:name="com.example.ultai.planner_questionnaire.SalesAnalysisFragment"
+        android:label="fragment_planner_sales_analysis"
+        tools:layout="@layout/fragment_planner_sales_analysis">
+        <action
+            android:id="@+id/action_salesAnalysisFragment_to_companyAnalysisFragment"
+            app:destination="@id/companyAnalysisFragment" />
+        <action
+            android:id="@+id/action_salesAnalysisFragment_to_businessGoalFragment"
+            app:destination="@id/businessGoalFragment" />
+        <action
+            android:id="@+id/action_salesAnalysisFragment_to_ultaiFragment2"
+            app:destination="@id/ultaiFragment2" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/companyAnalysisFragment"
+        android:name="com.example.ultai.planner_questionnaire.CompanyAnalysisFragment"
+        android:label="fragment_planner_company_analysis"
+        tools:layout="@layout/fragment_planner_company_analysis">
+        <action
+            android:id="@+id/action_companyAnalysisFragment_to_marketingActivityFragment"
+            app:destination="@id/marketingActivityFragment" />
+        <action
+            android:id="@+id/action_companyAnalysisFragment_to_salesAnalysisFragment"
+            app:destination="@id/salesAnalysisFragment" />
+        <action
+            android:id="@+id/action_companyAnalysisFragment_to_ultaiFragment2"
+            app:destination="@id/ultaiFragment2" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/marketingActivityFragment"
+        android:name="com.example.ultai.planner_questionnaire.MarketingActivityFragment"
+        android:label="fragment_planner_marketing_activity"
+        tools:layout="@layout/fragment_planner_marketing_activity">
+        <action
+            android:id="@+id/action_marketingActivityFragment_to_pastMarketingActivityFragment"
+            app:destination="@id/pastMarketingActivityFragment" />
+        <action
+            android:id="@+id/action_marketingActivityFragment_to_companyAnalysisFragment"
+            app:destination="@id/companyAnalysisFragment" />
+        <action
+            android:id="@+id/action_marketingActivityFragment_to_ultaiFragment2"
+            app:destination="@id/ultaiFragment2" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/pastMarketingActivityFragment"
+        android:name="com.example.ultai.planner_questionnaire.PastMarketingActivityFragment"
+        android:label="fragment_planner_past_marketing_activity"
+        tools:layout="@layout/fragment_planner_past_marketing_activity">
+        <action
+            android:id="@+id/action_pastMarketingActivityFragment_to_marketingAndAdResourcesFragment"
+            app:destination="@id/marketingAndAdResourcesFragment" />
+        <action
+            android:id="@+id/action_pastMarketingActivityFragment_to_marketingActivityFragment"
+            app:destination="@id/marketingActivityFragment" />
+        <action
+            android:id="@+id/action_pastMarketingActivityFragment_to_ultaiFragment2"
+            app:destination="@id/ultaiFragment2" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/marketingAndAdResourcesFragment"
+        android:name="com.example.ultai.planner_questionnaire.MarketingAndAdResourcesFragment"
+        android:label="fragment_planner_marketing_and_ad_resources"
+        tools:layout="@layout/fragment_planner_marketing_and_ad_resources">
+        <action
+            android:id="@+id/action_marketingAndAdResourcesFragment_to_budgetAndResourcesFragment"
+            app:destination="@id/budgetAndResourcesFragment" />
+        <action
+            android:id="@+id/action_marketingAndAdResourcesFragment_to_pastMarketingActivityFragment"
+            app:destination="@id/pastMarketingActivityFragment" />
+        <action
+            android:id="@+id/action_marketingAndAdResourcesFragment_to_ultaiFragment2"
+            app:destination="@id/ultaiFragment2" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/budgetAndResourcesFragment"
+        android:name="com.example.ultai.planner_questionnaire.BudgetAndResourcesFragment"
+        android:label="fragment_planner_budget_and_resources"
+        tools:layout="@layout/fragment_planner_budget_and_resources">
+        <action
+            android:id="@+id/action_budgetAndResourcesFragment_to_goalsAndExpectationsFragment"
+            app:destination="@id/goalsAndExpectationsFragment" />
+        <action
+            android:id="@+id/action_budgetAndResourcesFragment_to_marketingAndAdResourcesFragment"
+            app:destination="@id/marketingAndAdResourcesFragment" />
+        <action
+            android:id="@+id/action_budgetAndResourcesFragment_to_ultaiFragment2"
+            app:destination="@id/ultaiFragment2" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/goalsAndExpectationsFragment"
+        android:name="com.example.ultai.planner_questionnaire.GoalsAndExpectationsFragment"
+        android:label="fragment_planner_goals_and_expectations"
+        tools:layout="@layout/fragment_planner_goals_and_expectations">
+        <action
+            android:id="@+id/action_goalsAndExpectationsFragment_to_salesChannelsFragment"
+            app:destination="@id/salesChannelsFragment" />
+        <action
+            android:id="@+id/action_goalsAndExpectationsFragment_to_budgetAndResourcesFragment"
+            app:destination="@id/budgetAndResourcesFragment" />
+        <action
+            android:id="@+id/action_goalsAndExpectationsFragment_to_ultaiFragment2"
+            app:destination="@id/ultaiFragment2" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salesChannelsFragment"
+        android:name="com.example.ultai.planner_questionnaire.SalesChannelsFragment"
+        android:label="fragment_planner_sales_channels"
+        tools:layout="@layout/fragment_planner_sales_channels">
+        <action
+            android:id="@+id/action_salesChannelsFragment_to_technicalAnalyticsFragment"
+            app:destination="@id/technicalAnalyticsFragment" />
+        <action
+            android:id="@+id/action_salesChannelsFragment_to_goalsAndExpectationsFragment"
+            app:destination="@id/goalsAndExpectationsFragment" />
+        <action
+            android:id="@+id/action_salesChannelsFragment_to_ultaiFragment2"
+            app:destination="@id/ultaiFragment2" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/technicalAnalyticsFragment"
+        android:name="com.example.ultai.planner_questionnaire.TechnicalAnalyticsFragment"
+        android:label="fragment_planner_technical_analytics"
+        tools:layout="@layout/fragment_planner_technical_analytics">
+        <action
+            android:id="@+id/action_technicalAnalyticsFragment_to_customerFeedbackFragment"
+            app:destination="@id/customerFeedbackFragment" />
+        <action
+            android:id="@+id/action_technicalAnalyticsFragment_to_salesChannelsFragment"
+            app:destination="@id/salesChannelsFragment" />
+        <action
+            android:id="@+id/action_technicalAnalyticsFragment_to_ultaiFragment2"
+            app:destination="@id/ultaiFragment2" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/customerFeedbackFragment"
+        android:name="com.example.ultai.planner_questionnaire.CustomerFeedbackFragment"
+        android:label="fragment_planner_customer_feedback"
+        tools:layout="@layout/fragment_planner_customer_feedback">
+        <action
+            android:id="@+id/action_customerFeedbackFragment_to_conversionAnalysisFragment"
+            app:destination="@id/conversionAnalysisFragment" />
+        <action
+            android:id="@+id/action_customerFeedbackFragment_to_technicalAnalyticsFragment"
+            app:destination="@id/technicalAnalyticsFragment" />
+        <action
+            android:id="@+id/action_customerFeedbackFragment_to_ultaiFragment2"
+            app:destination="@id/ultaiFragment2" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/conversionAnalysisFragment"
+        android:name="com.example.ultai.planner_questionnaire.ConversionAnalysisFragment"
+        android:label="fragment_planner_conversion_analysis"
+        tools:layout="@layout/fragment_planner_conversion_analysis">
+        <action
+            android:id="@+id/action_conversionAnalysisFragment_to_salesStatisticsFragment"
+            app:destination="@id/salesStatisticsFragment" />
+        <action
+            android:id="@+id/action_conversionAnalysisFragment_to_customerFeedbackFragment"
+            app:destination="@id/customerFeedbackFragment" />
+        <action
+            android:id="@+id/action_conversionAnalysisFragment_to_ultaiFragment2"
+            app:destination="@id/ultaiFragment2" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salesStatisticsFragment"
+        android:name="com.example.ultai.planner_questionnaire.SalesStatisticsFragment"
+        android:label="fragment_planner_sales_statistics"
+        tools:layout="@layout/fragment_planner_sales_statistics">
+        <action
+            android:id="@+id/action_salesStatisticsFragment_to_completionFragment"
+            app:destination="@id/completionFragment" />
+        <action
+            android:id="@+id/action_salesStatisticsFragment_to_conversionAnalysisFragment"
+            app:destination="@id/conversionAnalysisFragment" />
+        <action
+            android:id="@+id/action_salesStatisticsFragment_to_ultaiFragment2"
+            app:destination="@id/ultaiFragment2" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/completionFragment"
+        android:name="com.example.ultai.planner_questionnaire.CompletionFragment"
+        android:label="fragment_planner_completion"
+        tools:layout="@layout/fragment_planner_completion">
+        <action
+            android:id="@+id/action_completionFragment_to_salesStatisticsFragment"
+            app:destination="@id/salesStatisticsFragment" />
+        <action
+            android:id="@+id/action_completionFragment_to_ultaiFragment2"
+            app:destination="@id/ultaiFragment2" />
+        <!-- Действие для выхода из графа анкеты (popBackStack) обрабатывается в BasePlannerQuestionFragment -->
+    </fragment>
+    <fragment
+        android:id="@+id/ultaiFragment2"
+        android:name="com.example.ultai.ultai.UltaiFragment"
+        android:label="UltaiFragment" >
+        <action
+            android:id="@+id/action_ultaiFragment2_to_businessGoalFragment"
+            app:destination="@id/businessGoalFragment" />
+        <action
+            android:id="@+id/action_ultaiFragment2_to_salesAnalysisFragment"
+            app:destination="@id/salesAnalysisFragment" />
+        <action
+            android:id="@+id/action_ultaiFragment2_to_companyAnalysisFragment"
+            app:destination="@id/companyAnalysisFragment" />
+        <action
+            android:id="@+id/action_ultaiFragment2_to_marketingActivityFragment"
+            app:destination="@id/marketingActivityFragment" />
+        <action
+            android:id="@+id/action_ultaiFragment2_to_pastMarketingActivityFragment"
+            app:destination="@id/pastMarketingActivityFragment" />
+        <action
+            android:id="@+id/action_ultaiFragment2_to_marketingAndAdResourcesFragment"
+            app:destination="@id/marketingAndAdResourcesFragment" />
+        <action
+            android:id="@+id/action_ultaiFragment2_to_budgetAndResourcesFragment"
+            app:destination="@id/budgetAndResourcesFragment" />
+        <action
+            android:id="@+id/action_ultaiFragment2_to_goalsAndExpectationsFragment"
+            app:destination="@id/goalsAndExpectationsFragment" />
+        <action
+            android:id="@+id/action_ultaiFragment2_to_salesChannelsFragment"
+            app:destination="@id/salesChannelsFragment" />
+        <action
+            android:id="@+id/action_ultaiFragment2_to_technicalAnalyticsFragment"
+            app:destination="@id/technicalAnalyticsFragment" />
+        <action
+            android:id="@+id/action_ultaiFragment2_to_customerFeedbackFragment"
+            app:destination="@id/customerFeedbackFragment" />
+        <action
+            android:id="@+id/action_ultaiFragment2_to_customerFeedbackFragment2"
+            app:destination="@id/customerFeedbackFragment" />
+        <action
+            android:id="@+id/action_ultaiFragment2_to_conversionAnalysisFragment"
+            app:destination="@id/conversionAnalysisFragment" />
+        <action
+            android:id="@+id/action_ultaiFragment2_to_completionFragment"
+            app:destination="@id/completionFragment" />
+        <action
+            android:id="@+id/action_ultaiFragment2_to_conversionAnalysisFragment2"
+            app:destination="@id/conversionAnalysisFragment" />
+        <action
+            android:id="@+id/action_ultaiFragment2_to_conversionAnalysisFragment3"
+            app:destination="@id/conversionAnalysisFragment" />
+        <action
+            android:id="@+id/action_ultaiFragment2_to_salesStatisticsFragment"
+            app:destination="@id/salesStatisticsFragment" />
+    </fragment>
+
+</navigation> 

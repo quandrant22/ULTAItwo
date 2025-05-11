@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_gray"
+    tools:context=".planer.stages.stage_1.Step2Fragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+        
+        <!-- Заголовок шага -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Шаг 2"
+            android:textColor="#FFC107"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginBottom="8dp"/>
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="СОЦИАЛЬНЫЕ ХАРАКТЕРИСТИКИ"
+            android:textColor="@color/beige"
+            android:textSize="16sp"
+            android:fontFamily="@font/exo2_0_light"
+            android:layout_marginBottom="24dp"/>
+        
+        <!-- Образование -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Какое имеет образование ваша ЦА"
+            android:textColor="@color/beige"
+            android:textSize="16sp"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginBottom="12dp"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxGeneralEducation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Общее образование"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxSecondaryEducation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Среднее профессиональное образование"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxHigherEducation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Высшее образование"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxAdditionalEducation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Дополнительное образование"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxProfessionalTraining"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Профессиональное обучение"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"
+            android:layout_marginBottom="16dp"/>
+            
+        <!-- Сфера деятельности -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Укажите сферу деятельности вашей ЦА"
+            android:textColor="@color/beige"
+            android:textSize="16sp"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginBottom="12dp"/>
+            
+        <EditText
+            android:id="@+id/editTextActivitySphere"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Введите сферу деятельности"
+            android:textColorHint="#808080"
+            android:textColor="@color/beige"
+            android:backgroundTint="@color/blue"
+            android:layout_marginBottom="16dp"/>
+            
+        <!-- Профессиональная деятельность -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Укажите профессиональную деятельность вашей ЦА"
+            android:textColor="@color/beige"
+            android:textSize="16sp"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginBottom="12dp"/>
+            
+        <EditText
+            android:id="@+id/editTextProfessionalActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Введите профессиональную деятельность"
+            android:textColorHint="#808080"
+            android:textColor="@color/beige"
+            android:backgroundTint="@color/blue"
+            android:layout_marginBottom="16dp"/>
+            
+        <!-- Опыт работы и уровень -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Укажите опыт работы и уровень вашей ЦА"
+            android:textColor="@color/beige"
+            android:textSize="16sp"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginBottom="12dp"/>
+            
+        <EditText
+            android:id="@+id/editTextWorkExperience"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Введите опыт работы и уровень"
+            android:textColorHint="#808080"
+            android:textColor="@color/beige"
+            android:backgroundTint="@color/blue"
+            android:layout_marginBottom="16dp"/>
+            
+        <!-- Должность -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Укажите должность вашей ЦА"
+            android:textColor="@color/beige"
+            android:textSize="16sp"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginBottom="12dp"/>
+            
+        <EditText
+            android:id="@+id/editTextPosition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Введите должность"
+            android:textColorHint="#808080"
+            android:textColor="@color/beige"
+            android:backgroundTint="@color/blue"
+            android:layout_marginBottom="16dp"/>
+            
+        <!-- Уровень дохода -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Выберите уровень дохода вашей ЦА"
+            android:textColor="@color/beige"
+            android:textSize="16sp"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginBottom="12dp"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxLowIncome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Низкий доход (менее 30 000 рублей в месяц)"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxMiddleIncome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Средний доход (30 000 - 100 000 рублей в месяц)"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxHighIncome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Высокий доход (более 100 000 рублей в месяц)"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"
+            android:layout_marginBottom="24dp"/>
+            
+        <!-- Кнопка завершения шага -->
+        <Button
+            android:id="@+id/buttonFinishStep2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Завершить"
+            android:textColor="#1E1E1E"
+            android:backgroundTint="@color/blue"
+            android:layout_marginBottom="24dp"/>
+    </LinearLayout>
+</ScrollView> 
+ 

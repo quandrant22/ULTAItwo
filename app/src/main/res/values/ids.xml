@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="nav_ultai_fragment_activity_main" type="id" />
+    <item name="nav_ultai_fragment" type="id" />
+    <item name="nav_host_fragment_activity_main" type="id" />
+    <item name="action_registrationFragment_to_homeFragment" type="id" />
+    <item name="action_navigation_registration_to_homeFragment" type="id" />
+    <item name="homeFragment" type="id" />
+    <item name="action_signinFragmentFragment_to_navigation_home2" type="id" />
+    <item name="SignInFragment" type="id" />
+    <item name="action_registrationFragment_to_signinFragment" type="id" />
+    <item name="AnketaFragment" type="id" />
+    <item name="anketaFragment" type="id" />
+</resources>

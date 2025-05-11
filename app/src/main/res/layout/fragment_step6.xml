@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_gray"
+    tools:context=".planer.stages.stage_1.Step6Fragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+        
+        <!-- Заголовок шага -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Шаг 6"
+            android:textColor="#FFC107"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginBottom="8dp"/>
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ОСОБЕННОСТИ ВЗАИМОДЕЙСТВИЯ С БРЕНДОМ"
+            android:textColor="@color/beige"
+            android:textSize="16sp"
+            android:fontFamily="@font/exo2_0_light"
+            android:layout_marginBottom="24dp"/>
+        
+        <!-- Лояльность к бренду -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Выберите уровень лояльности к бренду вашей ЦА"
+            android:textColor="@color/beige"
+            android:textSize="16sp"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginBottom="12dp"/>
+            
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textColor="@color/beige"/>
+                
+            <SeekBar
+                android:id="@+id/seekBarLoyalty"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="5"
+                android:progress="3"
+                android:progressTint="@color/blue"
+                android:thumbTint="@color/blue"/>
+                
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5"
+                android:textColor="@color/beige"/>
+            
+            <TextView
+                android:id="@+id/textViewLoyaltyValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
+            
+        <!-- Вовлеченность в сообщество бренда -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Выберите насколько ЦА вовлечена в сообщество бренда"
+            android:textColor="@color/beige"
+            android:textSize="16sp"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginBottom="12dp"/>
+            
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textColor="@color/beige"/>
+                
+            <SeekBar
+                android:id="@+id/seekBarCommunityInvolvement"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="5"
+                android:progress="3"
+                android:progressTint="@color/blue"
+                android:thumbTint="@color/blue"/>
+                
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5"
+                android:textColor="@color/beige"/>
+            
+            <TextView
+                android:id="@+id/textViewCommunityInvolvementValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
+            
+        <!-- Отношение к рекламе и маркетингу -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Какое отношение ЦА к рекламным сообщениям и маркетинговым акциям?"
+            android:textColor="@color/beige"
+            android:textSize="16sp"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginBottom="12dp"/>
+            
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textColor="@color/beige"/>
+                
+            <SeekBar
+                android:id="@+id/seekBarMarketingAttitude"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="5"
+                android:progress="3"
+                android:progressTint="@color/blue"
+                android:thumbTint="@color/blue"/>
+                
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5"
+                android:textColor="@color/beige"/>
+            
+            <TextView
+                android:id="@+id/textViewMarketingAttitudeValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
+        
+        <!-- Частота и предпочтения в получении коммуникаций от бренда -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Какова частота и предпочтения в получении коммуникаций от бренда?"
+            android:textColor="@color/beige"
+            android:textSize="16sp"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginBottom="12dp"/>
+            
+        <RadioGroup
+            android:id="@+id/radioGroupCommunicationFrequency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp">
+            
+            <RadioButton
+                android:id="@+id/radioDaily"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ежедневно: частые обновления от бренда через электронную почту, социальные сети или мобильные приложения"
+                android:textColor="@color/beige"
+                android:buttonTint="@color/blue"/>
+                
+            <RadioButton
+                android:id="@+id/radioWeekly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Еженедельно: получение информации от бренда раз в неделю через рассылку, обновления на веб-сайте или публикации в социальных сетях"
+                android:textColor="@color/beige"
+                android:buttonTint="@color/blue"/>
+                
+            <RadioButton
+                android:id="@+id/radioMonthly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ежемесячно: получение информации от бренда раз в месяц через рассылку новостей, промо-акции или обзоры продуктов"
+                android:textColor="@color/beige"
+                android:buttonTint="@color/blue"/>
+                
+            <RadioButton
+                android:id="@+id/radioOnDemand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="По запросу: получение информации от бренда только по требованию, например, через обратную связь на веб-сайте или звонок в контакт-центр"
+                android:textColor="@color/beige"
+                android:buttonTint="@color/blue"/>
+                
+            <RadioButton
+                android:id="@+id/radioMixed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Смешанный подход: использование разных способов получения информации от бренда в зависимости от ситуации"
+                android:textColor="@color/beige"
+                android:buttonTint="@color/blue"/>
+        </RadioGroup>
+            
+        <!-- Кнопка завершения шага -->
+        <Button
+            android:id="@+id/buttonFinishStep6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Завершить"
+            android:textColor="#1E1E1E"
+            android:backgroundTint="@color/blue"
+            android:layout_marginBottom="24dp"/>
+    </LinearLayout>
+</ScrollView>

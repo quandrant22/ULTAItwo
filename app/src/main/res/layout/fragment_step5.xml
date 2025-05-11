@@ -1,0 +1,680 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_gray"
+    tools:context=".planer.stages.stage_1.Step5Fragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+        
+        <!-- Заголовок шага -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Шаг 5"
+            android:textColor="#FFC107"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginBottom="8dp"/>
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ПОВЕДЕНЧЕСКИЕ ХАРАКТЕРИСТИКИ"
+            android:textColor="@color/beige"
+            android:textSize="16sp"
+            android:fontFamily="@font/exo2_0_light"
+            android:layout_marginBottom="24dp"/>
+        
+        <!-- Покупательские привычки и предпочтения -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Какие у вашей ЦА покупательские привычки и предпочтения?"
+            android:textColor="@color/beige"
+            android:textSize="16sp"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginBottom="12dp"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxOnlineShopping"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Предпочтение онлайн-покупок"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxOfflineShopping"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Офлайн-покупок"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxMixedShopping"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Смешанный тип покупок"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxBrandedProducts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Покупка товаров определенных брендов"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxNonBrandedProducts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Покупка товаров без привязки к бренду"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxQualityPreference"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Предпочтение качества товара"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxPricePreference"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Предпочтение цены"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxConveniencePreference"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Предпочтение удобства покупки"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxWithReviews"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Покупка товаров с учетом отзывов и рекомендаций"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxWithoutReviews"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Без учета отзывов"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxEcoEthical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Покупка товаров с учетом экологических и этических аспектов"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxFashionTrends"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Покупка товаров с учетом текущих модных тенденций"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxPersonalNeeds"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Покупка товаров с учетом личных потребностей и вкусов"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxSocialGroupBelonging"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Покупка товаров с учетом принадлежности к определенной культурной или социальной группе"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxSeasonalDiscounts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Предпочтение сезонных распродаж и скидок"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"
+            android:layout_marginBottom="16dp"/>
+            
+        <!-- Сценарии использования продуктов или услуг -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Какие у вашей сценарии использования продуктов или услуг?"
+            android:textColor="@color/beige"
+            android:textSize="16sp"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginBottom="12dp"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxDailyUsage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ежедневное использование"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxAsNeededUsage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Использование по мере необходимости"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxRareUsage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Редкое использование"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxHomeUsage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Использование дома"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxOfficeUsage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="В офисе"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxTravelUsage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="В путешествиях"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxPersonalUsage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Использование для личных нужд"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxGiftUsage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Подарочное использование"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxCommercialUsage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Использование в коммерческих целях"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"
+            android:layout_marginBottom="16dp"/>
+            
+        <!-- Частота и сезонность покупок -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Какая у вашей ЦА частота и сезонность покупок?"
+            android:textColor="@color/beige"
+            android:textSize="16sp"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginBottom="12dp"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxDailyPurchases"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ежедневные"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxWeeklyPurchases"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Еженедельные"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxMonthlyPurchases"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ежемесячные покупки"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxWeekdayPurchases"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Покупки в будние дни"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxWeekendPurchases"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="В выходные дни"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxPreHolidayPurchases"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Покупки в предпраздничные дни"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxSeasonalPurchases"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Покупки в зависимости от сезона (весна, лето, осень, зима)"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxSalaryPurchases"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Покупки в соответствии с получением дохода"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxEventPurchases"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Покупки в связи с определенными событиями"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxDiscountPurchases"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Покупки в период скидок и распродаж"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"
+            android:layout_marginBottom="16dp"/>
+            
+        <!-- Способы принятия решений о покупке -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Какие способы принятия решений о покупке?"
+            android:textColor="@color/beige"
+            android:textSize="16sp"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginBottom="12dp"/>
+            
+        <RadioGroup
+            android:id="@+id/radioGroupDecisionMaking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp">
+            
+            <RadioButton
+                android:id="@+id/radioRationalDecision"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Рациональные (сравнение цен и характеристик товаров)"
+                android:textColor="@color/beige"
+                android:buttonTint="@color/blue"/>
+                
+            <RadioButton
+                android:id="@+id/radioImpulsiveDecision"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Импульсивные (покупки под влиянием эмоций)"
+                android:textColor="@color/beige"
+                android:buttonTint="@color/blue"/>
+                
+            <RadioButton
+                android:id="@+id/radioRecommendedDecision"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Основанные на рекомендациях других"
+                android:textColor="@color/beige"
+                android:buttonTint="@color/blue"/>
+        </RadioGroup>
+            
+        <!-- Критерии выбора продукта -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="По каким критериям ЦА принимают решения о выборе продукта или услуги?"
+            android:textColor="@color/beige"
+            android:textSize="16sp"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginBottom="12dp"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxPriceCriteria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Цена и стоимость"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxQualityCriteria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Качество продукта или услуги"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxBrandCriteria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Бренд и репутация"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxConvenienceCriteria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Доступность и удобство"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxFeaturesCriteria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Характеристики и функциональность"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxDesignCriteria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Дизайн и эстетика"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxExperienceCriteria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Опыт пользования и обслуживания"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxEcoCriteria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Экологические и социальные аспекты"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxPersonalCriteria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Личные предпочтения и вкусы"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxRecommendationCriteria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Рекомендации и реклама"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"
+            android:layout_marginBottom="16dp"/>
+            
+        <!-- Важные факторы принятия решения -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Какие факторы для них наиболее важны при принятии решения?"
+            android:textColor="@color/beige"
+            android:textSize="16sp"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginBottom="12dp"/>
+            
+        <EditText
+            android:id="@+id/editTextImportantFactors"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Опишите важные факторы при принятии решения"
+            android:textColorHint="#808080"
+            android:textColor="@color/beige"
+            android:backgroundTint="@color/blue"
+            android:layout_marginBottom="16dp"/>
+            
+        <!-- Предпочтительные каналы коммуникации -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Предпочтительные каналы коммуникации"
+            android:textColor="@color/beige"
+            android:textSize="16sp"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginBottom="12dp"/>
+            
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Платформы и каналы потребления:"
+            android:textColor="@color/beige"
+            android:textSize="14sp"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginBottom="8dp"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxYouTube"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="YouTube"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxInstagram"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Instagram"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxVK"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Вконтакте"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxTwitter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="X(Твиттер)"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxBlogs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Блоги"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxPodcasts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Подкасты"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxStreaming"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Стриминговые сервисы"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxNewsletter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Рассылка"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"
+            android:layout_marginBottom="16dp"/>
+            
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Источники информации:"
+            android:textColor="@color/beige"
+            android:textSize="14sp"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginBottom="8dp"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxSocialNetworks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Социальные сети"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxSearchEngines"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Поисковые системы"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxReviews"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Отзывы потребителей"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxAdvertising"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Реклама"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"
+            android:layout_marginBottom="16dp"/>
+            
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Предпочтения в контенте:"
+            android:textColor="@color/beige"
+            android:textSize="14sp"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginBottom="8dp"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxVideoContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Видео"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxTextContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Текст"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxAudioContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Аудио"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxGraphicsContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Графика"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"/>
+            
+        <CheckBox
+            android:id="@+id/checkBoxInteractiveContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Интерактивный контент"
+            android:textColor="@color/beige"
+            android:buttonTint="@color/blue"
+            android:layout_marginBottom="24dp"/>
+            
+        <!-- Кнопка завершения шага -->
+        <Button
+            android:id="@+id/buttonFinishStep5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Завершить"
+            android:textColor="#1E1E1E"
+            android:backgroundTint="@color/blue"
+            android:layout_marginBottom="24dp"/>
+    </LinearLayout>
+</ScrollView>

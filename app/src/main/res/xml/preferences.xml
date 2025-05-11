@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="Настройки API"
+        app:iconSpaceReserved="false">
+
+        <EditTextPreference
+            android:key="deepseek_api_key"
+            android:title="DeepSeek API ключ"
+            android:summary="Введите ваш API ключ для DeepSeek"
+            app:iconSpaceReserved="false" />
+
+        <EditTextPreference
+            android:key="claude_api_key"
+            android:title="Claude API ключ"
+            android:summary="Введите ваш API ключ для Claude от Anthropic"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Настройки модели"
+        app:iconSpaceReserved="false">
+
+        <ListPreference
+            android:key="preferred_model"
+            android:title="Предпочтительная модель"
+            android:summary="Выберите модель, которая будет использоваться по умолчанию"
+            android:entries="@array/model_names"
+            android:entryValues="@array/model_values"
+            android:defaultValue="claude"
+            app:iconSpaceReserved="false" />
+
+        <ListPreference
+            android:key="claude_model"
+            android:title="Модель Claude"
+            android:summary="Выберите версию модели Claude"
+            android:entries="@array/claude_model_names"
+            android:entryValues="@array/claude_model_values"
+            android:defaultValue="claude-3-sonnet-20240229"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Настройки ответов"
+        app:iconSpaceReserved="false">
+
+        <SeekBarPreference
+            android:key="temperature"
+            android:title="Температура"
+            android:summary="Контролирует креативность ответов (0.1 - точные, 1.0 - креативные)"
+            android:defaultValue="70"
+            android:max="100"
+            app:min="1"
+            app:showSeekBarValue="true"
+            app:iconSpaceReserved="false" />
+
+        <SeekBarPreference
+            android:key="max_tokens"
+            android:title="Максимальная длина ответа"
+            android:summary="Максимальное количество токенов в ответе"
+            android:defaultValue="4000"
+            android:max="8000"
+            app:min="500"
+            app:showSeekBarValue="true"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="О приложении"
+        app:iconSpaceReserved="false">
+
+        <Preference
+            android:key="app_version"
+            android:title="Версия приложения"
+            android:summary="1.0.0"
+            app:iconSpaceReserved="false" />
+
+        <Preference
+            android:key="about"
+            android:title="О приложении"
+            android:summary="ULTAI - умный ассистент с поддержкой Claude и DeepSeek"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen> 

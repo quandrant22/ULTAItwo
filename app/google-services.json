@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "730815415453",
+    "project_id": "ultai-c73e5",
+    "storage_bucket": "ultai-c73e5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:730815415453:android:6f66cfd133a2edc3230074",
+        "android_client_info": {
+          "package_name": "com.example.ultai20"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "730815415453-lg76ddfht01r2a434kq26vnl2gqgtjg7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC33Cib-7Echa36J5JueAbzTZCVv83EJNM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "730815415453-lg76ddfht01r2a434kq26vnl2gqgtjg7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:730815415453:android:d57a06725509410c230074",
+        "android_client_info": {
+          "package_name": "com.example.ultai20"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "730815415453-lg76ddfht01r2a434kq26vnl2gqgtjg7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC33Cib-7Echa36J5JueAbzTZCVv83EJNM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "730815415453-lg76ddfht01r2a434kq26vnl2gqgtjg7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

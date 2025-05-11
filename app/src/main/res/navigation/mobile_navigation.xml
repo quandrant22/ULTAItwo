@@ -1,0 +1,725 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/navigation_home">
+
+    <fragment
+        android:id="@+id/basicQuestionnaireFragment"
+        android:name="com.example.ultai.anketa.BasicQuestionnaireFragment"
+        android:label="Базовая анкета"
+        tools:layout="@layout/fragment_basic_questionnaire">
+        <action
+            android:id="@+id/action_basicQuestionnaireFragment_to_navigation_home"
+            app:destination="@id/navigation_home"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="com.example.ultai.auth.RegistrationFragment"
+        android:label="activity_register"
+        tools:layout="@layout/activity_register" >
+        <action
+            android:id="@+id/action_registrationFragment_to_anketaFragment"
+            app:destination="@id/anketaFragment" />
+        <action
+            android:id="@+id/action_registrationFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_registrationFragment_to_basicQuestionnaireFragment"
+            app:destination="@id/basicQuestionnaireFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.ultai.home.HomeFragment"
+        android:label="HomeFragment" >
+
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_news"
+            app:destination="@id/navigation_news" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_dashboard"
+            app:destination="@id/navigation_dashboard" />
+
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_ultai"
+            app:destination="@id/navigation_ultai" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_news"
+            app:destination="@id/navigation_news" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_planer2"
+            app:destination="@id/navigation_planer" />
+    </fragment>
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.example.ultai.auth.SignInFragment"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" >
+        <action
+            android:id="@+id/action_signInFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/anketaFragment"
+        android:name="com.example.ultai.anketa.AnketaFragment"
+        android:label="AnketaFragment" >
+        <action
+            android:id="@+id/action_anketaFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_anketaFragment_to_basicQuestionnaireFragment"
+            app:destination="@id/basicQuestionnaireFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.example.ultai.dashboard.DashboardFragment"
+        android:label="DashboardFragment" >
+        <action
+            android:id="@+id/action_navigation_dashboard_to_navigation_home2"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_dashboard_to_navigation_planer2"
+            app:destination="@id/navigation_planer" />
+        <action
+            android:id="@+id/action_navigation_dashboard_to_navigation_ultai2"
+            app:destination="@id/navigation_ultai" />
+        <action
+            android:id="@+id/action_navigation_dashboard_to_navigation_news2"
+            app:destination="@id/navigation_news" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_planer"
+        android:name="com.example.ultai.planer.PlanerFragment"
+        android:label="PlanerFragment" >
+        <action
+            android:id="@+id/action_navigation_planer_to_navigation_dashboard2"
+            app:destination="@id/navigation_dashboard" />
+        <action
+            android:id="@+id/action_navigation_planer_to_navigation_home2"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_planer_to_navigation_news2"
+            app:destination="@id/navigation_news" />
+        <action
+            android:id="@+id/action_navigation_planer_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_navigation_planer_to_faza1_stages"
+            app:destination="@id/faza1_stages" />
+        <action
+            android:id="@+id/action_navigation_planer_to_faza2_stages"
+            app:destination="@id/faza2_stages" />
+        <action
+            android:id="@+id/action_navigation_planer_to_faza3_stages"
+            app:destination="@id/faza3_stages" />
+        <action
+            android:id="@+id/action_navigation_planer_to_plannerQuestionnaireFragment"
+            app:destination="@id/plannerQuestionnaireFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.ultai.settings.SettingsFragment"
+        android:label="SettingsFragment" >
+        <action
+            android:id="@+id/action_settingsFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_firstFragment"
+            app:destination="@id/firstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_ultai"
+        android:name="com.example.ultai.ultai.UltaiFragment"
+        android:label="UltaiFragment" >
+        <action
+            android:id="@+id/action_navigation_ultai_to_navigation_dashboard2"
+            app:destination="@id/navigation_dashboard" />
+        <action
+            android:id="@+id/action_navigation_ultai_to_navigation_home2"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_ultai_to_navigation_planer2"
+            app:destination="@id/navigation_planer" />
+        <action
+            android:id="@+id/action_navigation_ultai_to_navigation_news2"
+            app:destination="@id/navigation_news" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.ultai.profile.ProfileFragment"
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_profileFragment_to_notificationsFragment"
+            app:destination="@id/notificationsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationsFragment"
+        android:name="com.example.ultai.notifications.NotificationsFragment"
+        android:label="NotificationsFragment" >
+        <action
+            android:id="@+id/action_notificationsFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_news"
+        android:name="com.example.ultai.news.NewsFragment"
+        android:label="NewsFragment">
+        <action
+            android:id="@+id/action_navigation_news_to_navigation_planer"
+            app:destination="@id/navigation_planer" />
+        <action
+            android:id="@+id/action_navigation_news_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_news_to_profileFragment"
+            app:destination="@id/profileFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/firstFragment"
+        android:name="com.example.ultai.first.FirstFragment"
+        android:label="fragment_first"
+        tools:layout="@layout/fragment_first" >
+        <action
+            android:id="@+id/action_firstFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_firstFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/faza1_stages"
+        android:name="com.example.ultai.planer.stages.stage_1.Stage_1Fragment"
+        android:label="Этап 1"
+        tools:layout="@layout/fragment_stage_1">
+        <action
+            android:id="@+id/action_faza1_stages_to_navigation_planer"
+            app:destination="@id/navigation_planer" />
+        <action
+            android:id="@+id/action_faza1_stages_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_faza1_stages_to_step1Fragment"
+            app:destination="@id/step1Fragment" />
+        <action
+            android:id="@+id/action_faza1_stages_to_step2Fragment"
+            app:destination="@id/step2Fragment" />
+        <action
+            android:id="@+id/action_faza1_stages_to_step3Fragment"
+            app:destination="@id/step3Fragment" />
+        <action
+            android:id="@+id/action_faza1_stages_to_step4Fragment"
+            app:destination="@id/step4Fragment" />
+        <action
+            android:id="@+id/action_faza1_stages_to_step5Fragment"
+            app:destination="@id/step5Fragment" />
+        <action
+            android:id="@+id/action_faza1_stages_to_step6Fragment"
+            app:destination="@id/step6Fragment" />
+    </fragment>
+    
+    <fragment
+        android:id="@+id/step1Fragment"
+        android:name="com.example.ultai.planer.stages.stage_1.Step1Fragment"
+        android:label="Шаг 1"
+        tools:layout="@layout/fragment_step1">
+        <action
+            android:id="@+id/action_step1Fragment_to_faza1_stages"
+            app:destination="@id/faza1_stages"
+            app:popUpTo="@id/faza1_stages"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="stageId"
+            app:argType="integer"
+            android:defaultValue="1" />
+        <argument
+            android:name="stepId"
+            app:argType="integer"
+            android:defaultValue="1" />
+    </fragment>
+    
+    <fragment
+        android:id="@+id/step2Fragment"
+        android:name="com.example.ultai.planer.stages.stage_1.Step2Fragment"
+        android:label="Шаг 2"
+        tools:layout="@layout/fragment_step2">
+        <action
+            android:id="@+id/action_step2Fragment_to_faza1_stages"
+            app:destination="@id/faza1_stages"
+            app:popUpTo="@id/faza1_stages"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="stageId"
+            app:argType="integer"
+            android:defaultValue="1" />
+        <argument
+            android:name="stepId"
+            app:argType="integer"
+            android:defaultValue="2" />
+    </fragment>
+    
+    <fragment
+        android:id="@+id/step3Fragment"
+        android:name="com.example.ultai.planer.stages.stage_1.Step3Fragment"
+        android:label="Шаг 3"
+        tools:layout="@layout/fragment_step3">
+        <action
+            android:id="@+id/action_step3Fragment_to_faza1_stages"
+            app:destination="@id/faza1_stages"
+            app:popUpTo="@id/faza1_stages"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="stageId"
+            app:argType="integer"
+            android:defaultValue="1" />
+        <argument
+            android:name="stepId"
+            app:argType="integer"
+            android:defaultValue="3" />
+    </fragment>
+    
+    <fragment
+        android:id="@+id/step4Fragment"
+        android:name="com.example.ultai.planer.stages.stage_1.Step4Fragment"
+        android:label="Шаг 4"
+        tools:layout="@layout/fragment_step4">
+        <action
+            android:id="@+id/action_step4Fragment_to_faza1_stages"
+            app:destination="@id/faza1_stages"
+            app:popUpTo="@id/faza1_stages"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="stageId"
+            app:argType="integer"
+            android:defaultValue="1" />
+        <argument
+            android:name="stepId"
+            app:argType="integer"
+            android:defaultValue="4" />
+    </fragment>
+    
+    <fragment
+        android:id="@+id/step5Fragment"
+        android:name="com.example.ultai.planer.stages.stage_1.Step5Fragment"
+        android:label="Шаг 5"
+        tools:layout="@layout/fragment_step5">
+        <action
+            android:id="@+id/action_step5Fragment_to_faza1_stages"
+            app:destination="@id/faza1_stages"
+            app:popUpTo="@id/faza1_stages"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="stageId"
+            app:argType="integer"
+            android:defaultValue="1" />
+        <argument
+            android:name="stepId"
+            app:argType="integer"
+            android:defaultValue="5" />
+    </fragment>
+    
+    <fragment
+        android:id="@+id/step6Fragment"
+        android:name="com.example.ultai.planer.stages.stage_1.Step6Fragment"
+        android:label="Шаг 6"
+        tools:layout="@layout/fragment_step6">
+        <action
+            android:id="@+id/action_step6Fragment_to_faza1_stages"
+            app:destination="@id/faza1_stages"
+            app:popUpTo="@id/faza1_stages"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_step6Fragment_to_faza2_stages"
+            app:destination="@id/faza2_stages" />
+        <argument
+            android:name="stageId"
+            app:argType="integer"
+            android:defaultValue="1" />
+        <argument
+            android:name="stepId"
+            app:argType="integer"
+            android:defaultValue="6" />
+    </fragment>
+    
+    <fragment
+        android:id="@+id/faza2_stages"
+        android:name="com.example.ultai.planer.stages.stage_2.Stage_2Fragment"
+        android:label="Этап 2"
+        tools:layout="@layout/fragment_stage_2">
+        <action
+            android:id="@+id/action_faza2_stages_to_navigation_planer"
+            app:destination="@id/navigation_planer" />
+        <action
+            android:id="@+id/action_faza2_stages_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_faza2_stages_to_step1Stage2Fragment"
+            app:destination="@id/step1Stage2Fragment" />
+        <action
+            android:id="@+id/action_faza2_stages_to_step2Stage2Fragment"
+            app:destination="@id/step2Stage2Fragment" />
+        <action
+            android:id="@+id/action_faza2_stages_to_step3Stage2Fragment"
+            app:destination="@id/step3Stage2Fragment" />
+        <action
+            android:id="@+id/action_faza2_stages_to_step4Stage2Fragment"
+            app:destination="@id/step4Stage2Fragment" />
+        <action
+            android:id="@+id/action_faza2_stages_to_step5Stage2Fragment"
+            app:destination="@id/step5Stage2Fragment" />
+        <action
+            android:id="@+id/action_faza2_stages_to_step6Stage2Fragment"
+            app:destination="@id/step6Stage2Fragment" />
+        <action
+            android:id="@+id/action_faza2_stages_to_step7Stage2Fragment"
+            app:destination="@id/step7Stage2Fragment" />
+    </fragment>
+    
+    <fragment
+        android:id="@+id/step1Stage2Fragment"
+        android:name="com.example.ultai.planer.stages.stage_2.Step1Stage2Fragment"
+        android:label="Шаг 1: Продукты и услуги"
+        tools:layout="@layout/fragment_step_stage2_1">
+        <action
+            android:id="@+id/action_step1Stage2Fragment_to_faza2_stages"
+            app:destination="@id/faza2_stages"
+            app:popUpTo="@id/faza2_stages"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="stageId"
+            app:argType="integer"
+            android:defaultValue="2" />
+        <argument
+            android:name="stepId"
+            app:argType="integer"
+            android:defaultValue="1" />
+    </fragment>
+    
+    <fragment
+        android:id="@+id/step2Stage2Fragment"
+        android:name="com.example.ultai.planer.stages.stage_2.Step2Stage2Fragment"
+        android:label="Шаг 2: Объемы продаж"
+        tools:layout="@layout/fragment_step_stage2_2">
+        <action
+            android:id="@+id/action_step2Stage2Fragment_to_faza2_stages"
+            app:destination="@id/faza2_stages"
+            app:popUpTo="@id/faza2_stages"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="stageId"
+            app:argType="integer"
+            android:defaultValue="2" />
+        <argument
+            android:name="stepId"
+            app:argType="integer"
+            android:defaultValue="2" />
+    </fragment>
+    
+    <fragment
+        android:id="@+id/step3Stage2Fragment"
+        android:name="com.example.ultai.planer.stages.stage_2.Step3Stage2Fragment"
+        android:label="Шаг 3: Ценообразование"
+        tools:layout="@layout/fragment_step_stage2_3">
+        <action
+            android:id="@+id/action_step3Stage2Fragment_to_faza2_stages"
+            app:destination="@id/faza2_stages"
+            app:popUpTo="@id/faza2_stages"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="stageId"
+            app:argType="integer"
+            android:defaultValue="2" />
+        <argument
+            android:name="stepId"
+            app:argType="integer"
+            android:defaultValue="3" />
+    </fragment>
+    
+    <fragment
+        android:id="@+id/step4Stage2Fragment"
+        android:name="com.example.ultai.planer.stages.stage_2.Step4Stage2Fragment"
+        android:label="Шаг 4: Каналы продаж"
+        tools:layout="@layout/fragment_step_stage2_4">
+        <action
+            android:id="@+id/action_step4Stage2Fragment_to_faza2_stages"
+            app:destination="@id/faza2_stages"
+            app:popUpTo="@id/faza2_stages"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="stageId"
+            app:argType="integer"
+            android:defaultValue="2" />
+        <argument
+            android:name="stepId"
+            app:argType="integer"
+            android:defaultValue="4" />
+    </fragment>
+    
+    <fragment
+        android:id="@+id/step5Stage2Fragment"
+        android:name="com.example.ultai.planer.stages.stage_2.Step5Stage2Fragment"
+        android:label="Шаг 5: Ресурсы"
+        tools:layout="@layout/fragment_step_stage2_5">
+        <action
+            android:id="@+id/action_step5Stage2Fragment_to_faza2_stages"
+            app:destination="@id/faza2_stages"
+            app:popUpTo="@id/faza2_stages"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="stageId"
+            app:argType="integer"
+            android:defaultValue="2" />
+        <argument
+            android:name="stepId"
+            app:argType="integer"
+            android:defaultValue="5" />
+    </fragment>
+    
+    <fragment
+        android:id="@+id/step6Stage2Fragment"
+        android:name="com.example.ultai.planer.stages.stage_2.Step6Stage2Fragment"
+        android:label="Шаг 6: Доходы и расходы"
+        tools:layout="@layout/fragment_step_stage2_6">
+        <action
+            android:id="@+id/action_step6Stage2Fragment_to_faza2_stages"
+            app:destination="@id/faza2_stages"
+            app:popUpTo="@id/faza2_stages"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="stageId"
+            app:argType="integer"
+            android:defaultValue="2" />
+        <argument
+            android:name="stepId"
+            app:argType="integer"
+            android:defaultValue="6" />
+    </fragment>
+    
+    <fragment
+        android:id="@+id/step7Stage2Fragment"
+        android:name="com.example.ultai.planer.stages.stage_2.Step7Stage2Fragment"
+        android:label="Шаг 7: Проблемы и вызовы"
+        tools:layout="@layout/fragment_step_stage2_7">
+        <action
+            android:id="@+id/action_step7Stage2Fragment_to_faza2_stages"
+            app:destination="@id/faza2_stages"
+            app:popUpTo="@id/faza2_stages"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="stageId"
+            app:argType="integer"
+            android:defaultValue="2" />
+        <argument
+            android:name="stepId"
+            app:argType="integer"
+            android:defaultValue="7" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/faza3_stages"
+        android:name="com.example.ultai.planer.stages.stage_3.Stage_3Fragment"
+        android:label="Этап 3"
+        tools:layout="@layout/fragment_stage_3">
+        <action
+            android:id="@+id/action_faza3_stages_to_navigation_planer"
+            app:destination="@id/navigation_planer" />
+        <action
+            android:id="@+id/action_faza3_stages_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_faza3_stages_to_step1Stage3Fragment"
+            app:destination="@id/step1Stage3Fragment" />
+        <action
+            android:id="@+id/action_faza3_stages_to_step2Stage3Fragment"
+            app:destination="@id/step2Stage3Fragment" />
+        <action
+            android:id="@+id/action_faza3_stages_to_step3Stage3Fragment"
+            app:destination="@id/step3Stage3Fragment" />
+        <action
+            android:id="@+id/action_faza3_stages_to_step4Stage3Fragment"
+            app:destination="@id/step4Stage3Fragment" />
+        <action
+            android:id="@+id/action_faza3_stages_to_step5Stage3Fragment"
+            app:destination="@id/step5Stage3Fragment" />
+        <action
+            android:id="@+id/action_faza3_stages_to_step6Stage3Fragment"
+            app:destination="@id/step6Stage3Fragment" />
+        <action
+            android:id="@+id/action_faza3_stages_to_step7Stage3Fragment"
+            app:destination="@id/step7Stage3Fragment" />
+    </fragment>
+    
+    <fragment
+        android:id="@+id/step1Stage3Fragment"
+        android:name="com.example.ultai.planer.stages.stage_3.Step1Stage3Fragment"
+        android:label="Шаг 1: Основные конкуренты"
+        tools:layout="@layout/fragment_step_stage3_1">
+        <action
+            android:id="@+id/action_step1Stage3Fragment_to_faza3_stages"
+            app:destination="@id/faza3_stages"
+            app:popUpTo="@id/faza3_stages"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="stageId"
+            app:argType="integer"
+            android:defaultValue="3" />
+        <argument
+            android:name="stepId"
+            app:argType="integer"
+            android:defaultValue="1" />
+    </fragment>
+    
+    <fragment
+        android:id="@+id/step2Stage3Fragment"
+        android:name="com.example.ultai.planer.stages.stage_3.Step2Stage3Fragment"
+        android:label="Шаг 2: Продукты/услуги конкурентов"
+        tools:layout="@layout/fragment_step_stage3_2">
+        <action
+            android:id="@+id/action_step2Stage3Fragment_to_faza3_stages"
+            app:destination="@id/faza3_stages"
+            app:popUpTo="@id/faza3_stages"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="stageId"
+            app:argType="integer"
+            android:defaultValue="3" />
+        <argument
+            android:name="stepId"
+            app:argType="integer"
+            android:defaultValue="2" />
+    </fragment>
+    
+    <fragment
+        android:id="@+id/step3Stage3Fragment"
+        android:name="com.example.ultai.planer.stages.stage_3.Step3Stage3Fragment"
+        android:label="Шаг 3: Сильные и слабые стороны конкурентов"
+        tools:layout="@layout/fragment_step_stage3_3">
+        <action
+            android:id="@+id/action_step3Stage3Fragment_to_faza3_stages"
+            app:destination="@id/faza3_stages"
+            app:popUpTo="@id/faza3_stages"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="stageId"
+            app:argType="integer"
+            android:defaultValue="3" />
+        <argument
+            android:name="stepId"
+            app:argType="integer"
+            android:defaultValue="3" />
+    </fragment>
+    
+    <fragment
+        android:id="@+id/step4Stage3Fragment"
+        android:name="com.example.ultai.planer.stages.stage_3.Step4Stage3Fragment"
+        android:label="Шаг 4: Маркетинговые стратегии конкурентов"
+        tools:layout="@layout/fragment_step_stage3_4">
+        <action
+            android:id="@+id/action_step4Stage3Fragment_to_faza3_stages"
+            app:destination="@id/faza3_stages"
+            app:popUpTo="@id/faza3_stages"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="stageId"
+            app:argType="integer"
+            android:defaultValue="3" />
+        <argument
+            android:name="stepId"
+            app:argType="integer"
+            android:defaultValue="4" />
+    </fragment>
+    
+    <fragment
+        android:id="@+id/step5Stage3Fragment"
+        android:name="com.example.ultai.planer.stages.stage_3.Step5Stage3Fragment"
+        android:label="Шаг 5: Ваше УТП и целевая аудитория"
+        tools:layout="@layout/fragment_step_stage3_5">
+        <action
+            android:id="@+id/action_step5Stage3Fragment_to_faza3_stages"
+            app:destination="@id/faza3_stages"
+            app:popUpTo="@id/faza3_stages"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="stageId"
+            app:argType="integer"
+            android:defaultValue="3" />
+        <argument
+            android:name="stepId"
+            app:argType="integer"
+            android:defaultValue="5" />
+    </fragment>
+    
+    <fragment
+        android:id="@+id/step6Stage3Fragment"
+        android:name="com.example.ultai.planer.stages.stage_3.Step6Stage3Fragment"
+        android:label="Шаг 6: Изменения в конкурентной среде"
+        tools:layout="@layout/fragment_step_stage3_6">
+        <action
+            android:id="@+id/action_step6Stage3Fragment_to_faza3_stages"
+            app:destination="@id/faza3_stages"
+            app:popUpTo="@id/faza3_stages"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="stageId"
+            app:argType="integer"
+            android:defaultValue="3" />
+        <argument
+            android:name="stepId"
+            app:argType="integer"
+            android:defaultValue="6" />
+    </fragment>
+    
+    <fragment
+        android:id="@+id/step7Stage3Fragment"
+        android:name="com.example.ultai.planer.stages.stage_3.Step7Stage3Fragment"
+        android:label="Шаг 7: Возможности сотрудничества"
+        tools:layout="@layout/fragment_step_stage3_7">
+        <action
+            android:id="@+id/action_step7Stage3Fragment_to_faza3_stages"
+            app:destination="@id/faza3_stages"
+            app:popUpTo="@id/faza3_stages"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="stageId"
+            app:argType="integer"
+            android:defaultValue="3" />
+        <argument
+            android:name="stepId"
+            app:argType="integer"
+            android:defaultValue="7" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/plannerQuestionnaireFragment"
+        android:name="com.example.ultai.planner_questionnaire.PlannerStepGoalFragment"
+        android:label="Цель бизнеса"
+        tools:layout="@layout/fragment_planner_questionnaire">
+    </fragment>
+</navigation>

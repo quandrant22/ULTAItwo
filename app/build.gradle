@@ -1,0 +1,101 @@
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
+    id 'androidx.navigation.safeargs'
+}
+
+android {
+    namespace 'com.example.ultai20' // Измените на ваш пакет
+    compileSdk 34 // Используйте актуальную версию SDK
+
+    defaultConfig {
+        applicationId "com.example.ultai20" // ID должен совпадать с namespace
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    buildFeatures {
+        viewBinding true // Включаем ViewBinding, т.к. исходный проект не использовал Compose
+    }
+}
+
+dependencies {
+    // Firebase BOM (управляет версиями библиотек Firebase)
+    implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
+
+    // Firebase Authentication (Java version)
+    implementation("com.google.firebase:firebase-auth")
+
+    // AndroidX Preference Library (Java version)
+    implementation "androidx.preference:preference:1.2.1" // Убираем -ktx
+
+    // SwipeRefreshLayout
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
+    implementation 'androidx.core:core:1.12.0' // Убираем -ktx
+    implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "com.google.android.material:material:1.11.0"
+    implementation "androidx.constraintlayout:constraintlayout:2.1.4"
+
+    // Navigation Component (Java versions)
+    def nav_version = "2.7.7"
+    implementation "androidx.navigation:navigation-fragment:$nav_version" // Убираем -ktx
+    implementation "androidx.navigation:navigation-ui:$nav_version" // Убираем -ktx
+
+    // Firebase Realtime Database
+    implementation 'com.google.firebase:firebase-database'
+
+    // OkHttp (для сетевых запросов)
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.12.0"))
+    implementation("com.squareup.okhttp3:okhttp")
+    implementation("com.squareup.okhttp3:logging-interceptor") // Опционально, для логирования
+
+    // Retrofit (для работы с REST API)
+    def retrofit_version = "2.9.0" // Проверьте на актуальность
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version" // Конвертер для JSON (Gson)
+
+    // Room Persistence Library
+    def room_version = "2.6.1" // Используем актуальную версию
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    // Опционально: поддержка Kotlin Coroutines
+    // implementation "androidx.room:room-ktx:$room_version"
+    // Опционально: поддержка RxJava
+    // implementation "androidx.room:room-rxjava3:$room_version"
+    // Опционально: поддержка Paging 3
+    // implementation "androidx.room:room-paging:$room_version"
+
+    // Glide (для загрузки изображений)
+    def glide_version = "4.16.0" // Используем актуальную версию
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
+
+    // Jsoup (для HTML парсинга)
+    implementation 'org.jsoup:jsoup:1.17.2' // Используем актуальную версию
+
+    // WorkManager (для фоновых задач)
+    def work_version = "2.9.0" // Используем актуальную версию
+    implementation "androidx.work:work-runtime:$work_version"
+    // Опционально: поддержка Kotlin Coroutines
+    // implementation "androidx.work:work-runtime-ktx:$work_version"
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    // Добавьте другие зависимости здесь
+} 

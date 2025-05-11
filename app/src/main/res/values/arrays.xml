@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Reply Preference -->
+    <string-array name="reply_entries">
+        <item>Reply</item>
+        <item>Reply to all</item>
+    </string-array>
+
+    <string-array name="reply_values">
+        <item>reply</item>
+        <item>reply_all</item>
+    </string-array>
+
+    <!-- Массивы для выбора модели -->
+    <string-array name="model_names">
+        <item>DeepSeek</item>
+        <item>Claude (Anthropic)</item>
+    </string-array>
+    
+    <string-array name="model_values">
+        <item>deepseek</item>
+        <item>claude</item>
+    </string-array>
+    
+    <!-- Массивы для выбора модели Claude -->
+    <string-array name="claude_model_names">
+        <item>Claude 3 Opus</item>
+        <item>Claude 3 Sonnet</item>
+        <item>Claude 3 Haiku</item>
+    </string-array>
+    
+    <string-array name="claude_model_values">
+        <item>claude-3-opus-20240229</item>
+        <item>claude-3-sonnet-20240229</item>
+        <item>claude-3-haiku-20240307</item>
+    </string-array>
+</resources>

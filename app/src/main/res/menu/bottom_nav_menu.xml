@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/home_nonactive"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/navigation_planer"
+        android:icon="@drawable/planner_nonactive"
+        android:title="Planer" />
+
+    <item
+        android:id="@+id/navigation_ultai"
+        android:icon="@drawable/chatultai_nonactive"
+        android:title="Ultai" />
+
+    <item
+        android:id="@+id/navigation_dashboard"
+        android:icon="@drawable/dashboard_nonactive"
+        android:title="@string/title_dashboard" />
+
+    <item
+        android:id="@+id/navigation_news"
+        android:icon="@drawable/news_nonactive"
+        android:title="News" />
+
+</menu>

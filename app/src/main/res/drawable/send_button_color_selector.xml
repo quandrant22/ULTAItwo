@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Когда поле ввода заполнено - красный цвет -->
+    <item android:color="@color/red" android:state_activated="true" />
+    <!-- Когда поле ввода пустое - бежевый цвет -->
+    <item android:color="@color/beige" /> <!-- Бежевый цвет -->
+</selector> 

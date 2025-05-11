@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.ultai20.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+        <action android:id="@+id/action_homeFragment_to_dashboardFragment" app:destination="@id/dashboardFragment"/>
+        <action android:id="@+id/action_homeFragment_to_plannerFragment" app:destination="@id/plannerFragment"/>
+        <action android:id="@+id/action_homeFragment_to_newsFragment" app:destination="@id/newsFragment"/>
+        <action android:id="@+id/action_homeFragment_to_ultAIFragment" app:destination="@id/ultAIFragment"/>
+        <action android:id="@+id/action_homeFragment_to_profileFragment" app:destination="@id/profileFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.example.ultai20.DashboardFragment"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/plannerFragment"
+        android:name="com.example.ultai20.PlannerFragment"
+        android:label="fragment_planer"
+        tools:layout="@layout/fragment_planer" />
+
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="com.example.ultai20.NewsFragment"
+        android:label="fragment_news"
+        tools:layout="@layout/fragment_news" />
+
+    <fragment
+        android:id="@+id/ultAIFragment"
+        android:name="com.example.ultai20.UltAIFragment"
+        android:label="fragment_ultai"
+        tools:layout="@layout/fragment_ultai" />
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.ultai20.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile">
+        <action android:id="@+id/action_profileFragment_to_settingsFragment" app:destination="@id/settingsFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.ultai20.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+</navigation>

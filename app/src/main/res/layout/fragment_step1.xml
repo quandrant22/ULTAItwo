@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_gray"
+    tools:context=".planer.stages.stage_1.Step1Fragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+        
+        <!-- Заголовок шага -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Шаг 1"
+            android:textColor="#FFC107"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginBottom="8dp"/>
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Определить демографические характеристики целевой аудитории"
+            android:textColor="@color/beige"
+            android:textSize="16sp"
+            android:fontFamily="@font/exo2_0_light"
+            android:layout_marginBottom="24dp"/>
+        
+        <!-- Возраст -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Какой возраст Вашей целевой аудитории?"
+            android:textColor="@color/beige"
+            android:textSize="16sp"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginBottom="12dp"/>
+            
+        <RadioGroup
+            android:id="@+id/radioGroupAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp">
+            
+            <RadioButton
+                android:id="@+id/radioAge18_24"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="18-24 года"
+                android:textColor="@color/beige"
+                android:buttonTint="@color/blue"/>
+                
+            <RadioButton
+                android:id="@+id/radioAge25_34"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="25-34 года"
+                android:textColor="@color/beige"
+                android:buttonTint="@color/blue"/>
+                
+            <RadioButton
+                android:id="@+id/radioAge35_44"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="35-44 года"
+                android:textColor="@color/beige"
+                android:buttonTint="@color/blue"/>
+                
+            <RadioButton
+                android:id="@+id/radioAge45_54"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="45-54 года"
+                android:textColor="@color/beige"
+                android:buttonTint="@color/blue"/>
+                
+            <RadioButton
+                android:id="@+id/radioAge55Plus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="55+ лет"
+                android:textColor="@color/beige"
+                android:buttonTint="@color/blue"/>
+        </RadioGroup>
+        
+        <!-- Семейное положение -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Какое семейное положение Вашей целевой аудитории?"
+            android:textColor="@color/beige"
+            android:textSize="16sp"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginBottom="12dp"/>
+            
+        <RadioGroup
+            android:id="@+id/radioGroupFamily"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp">
+            
+            <RadioButton
+                android:id="@+id/radioFamilySingle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Не замужем/Не женаты"
+                android:textColor="@color/beige"
+                android:buttonTint="@color/blue"/>
+                
+            <RadioButton
+                android:id="@+id/radioFamilyMarried"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Замужем/Женаты"
+                android:textColor="@color/beige"
+                android:buttonTint="@color/blue"/>
+                
+            <RadioButton
+                android:id="@+id/radioFamilyDivorced"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Разведены"
+                android:textColor="@color/beige"
+                android:buttonTint="@color/blue"/>
+        </RadioGroup>
+        
+        <!-- Наличие детей -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Какое количество детей у Вашей целевой аудитории?"
+            android:textColor="@color/beige"
+            android:textSize="16sp"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginBottom="12dp"/>
+            
+        <RadioGroup
+            android:id="@+id/radioGroupChildren"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp">
+            
+            <RadioButton
+                android:id="@+id/radioChildrenNone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Нет детей"
+                android:textColor="@color/beige"
+                android:buttonTint="@color/blue"/>
+                
+            <RadioButton
+                android:id="@+id/radioChildren1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1 ребенок"
+                android:textColor="@color/beige"
+                android:buttonTint="@color/blue"/>
+                
+            <RadioButton
+                android:id="@+id/radioChildren2_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2-3 ребенка"
+                android:textColor="@color/beige"
+                android:buttonTint="@color/blue"/>
+        </RadioGroup>
+        
+        <!-- Географическое местоположение -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Какое географическое местоположение Вашей целевой аудитории?"
+            android:textColor="@color/beige"
+            android:textSize="16sp"
+            android:fontFamily="@font/exo2_0_medium"
+            android:layout_marginBottom="12dp"/>
+            
+        <Spinner
+            android:id="@+id/spinnerCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue"
+            android:layout_marginBottom="8dp"/>
+            
+        <Spinner
+            android:id="@+id/spinnerRegion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue"
+            android:layout_marginBottom="8dp"/>
+            
+        <EditText
+            android:id="@+id/editTextCustomLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Введите свободную местность"
+            android:textColorHint="#808080"
+            android:textColor="@color/beige"
+            android:backgroundTint="@color/blue"
+            android:layout_marginBottom="24dp"/>
+        
+        <!-- Кнопка завершения шага -->
+        <Button
+            android:id="@+id/buttonFinishStep1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Завершить"
+            android:textColor="#1E1E1E"
+            android:backgroundTint="@color/blue"
+            android:layout_marginBottom="24dp"/>
+    </LinearLayout>
+</ScrollView> 

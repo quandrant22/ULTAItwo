@@ -1,0 +1,70 @@
+<resources>
+    <string name="app_name">ULTAI</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_ultai">Ultai</string>
+    <string name="title_registration">Registration</string>
+    
+    <!-- Login и восстановление пароля -->
+    <string name="back_button">Назад</string>
+    <string name="forgot_password_title">Восстановление пароля</string>
+    <string name="forgot_password_description">Введите ваш email, и мы отправим вам инструкции по восстановлению пароля</string>
+    <string name="forgot_password_button">Отправить</string>
+    <string name="forgot_password_success">Инструкции по восстановлению пароля отправлены на ваш email</string>
+    
+    <!-- Базовая анкета -->
+    <string name="title_basic_questionnaire">Базовая анкета</string>
+    <string name="subtitle_basic_questionnaire">Базовая анкета перед переходом в рабочую зону</string>
+    <string name="question_company_name">Название вашей компании</string>
+    <string name="question_activity_type">Тип деятельности</string>
+    <string name="question_country">Страна</string>
+    <string name="question_services_description">Перечислите весь комплекс ваших услуг/продуктов</string>
+    <string name="question_market_scope">Где вы продаете (география реализации)</string>
+    <string name="question_geography">Выберите географию реализации</string>
+    <string name="question_city">Укажите город</string>
+    <string name="question_target_country">Укажите страну</string>
+    <string name="question_target_countries">Укажите страны</string>
+    <string name="hint_company_name">Введите название компании</string>
+    <string name="hint_services_description">Опишите ваши услуги/продукты</string>
+    <string name="button_next">Далее</string>
+    <string name="button_previous">Назад</string>
+    <string name="button_finish">Завершить</string>
+    <string name="message_questionnaire_saved">Анкета успешно сохранена!</string>
+    <string name="error_empty_company_name">Пожалуйста, введите название компании</string>
+    <string name="error_empty_services_description">Пожалуйста, опишите ваши услуги/продукты</string>
+    <string name="error_saving_questionnaire">Ошибка сохранения: %1$s</string>
+    
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+    <string name="message_hint">Напишите свой вопрос здесь</string>
+    <string name="send_message">Отправить сообщение</string>
+    <string name="refresh_news">Обновить новости</string>
+
+    <!-- Профиль пользователя -->
+    <string name="profile_save_success">Данные профиля успешно сохранены</string>
+    <string name="profile_edit_mode">Режим редактирования</string>
+    <string name="profile_title">Мой аккаунт</string>
+    <string name="profile_personal_data">Личные данные</string>
+    <string name="profile_name">Ваше имя</string>
+    <string name="profile_phone">Номер телефона</string>
+    <string name="profile_email">Электронный адрес</string>
+    <string name="profile_edit">Редактировать</string>
+    <string name="profile_save">Сохранить</string>
+    <string name="profile_loading">Загрузка данных...</string>
+
+    <string name="label_guest">Гость</string>
+</resources>

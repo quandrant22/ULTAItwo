@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- App specific colors -->
+    <color name="blue">#07A5C3</color>
+    <color name="beige">#E6DCD1</color>
+    <color name="gray">#2C2C2E</color>
+    <color name="dark_gray">#1C1C1E</color>
+    <color name="light_gray">#8E8E93</color>
+    <color name="red">#FF3B30</color>
+    <color name="yellow">#F4B324</color>
+    <color name="cyan_glow">#50E3C2</color>
+    <color name="orange">#FFB529</color>
+    <color name="black_dark">#121212</color>
+    <color name="gray_light">#AAAAAA</color>
+
+    <color name="colorActive">#07A5C3</color>
+    <color name="colorInactive">#F6E7D8</color>
+
+    <color name="user_message_background">#F6E7D8</color>
+    <color name="assistant_message_background">#F4B324</color>
+    <color name="chat_background">#1C191A</color>
+    <color name="input_background">#303030</color>
+    <color name="hint_color">#808080</color>
+    <color name="send_button_normal">#F6E7D8</color>
+    <color name="send_button_pressed">#F14902</color>
+
+    <color name="ic_launcher_background">#3F51B5</color>
+
+
+
+</resources>

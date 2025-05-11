@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_dark"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- Заголовок -->
+        <TextView
+            android:id="@+id/textViewStepTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/exo2_0_bold"
+            android:text="Шаг 5: Ваше УТП и целевая аудитория"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Вопрос о УТП и целевой аудитории -->
+        <TextView
+            android:id="@+id/textViewUTPTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/exo2_0_medium"
+            android:text="В чем заключается ваше уникальное торговое предложение и какова ЦА ваших конкурентов?"
+            android:textColor="@color/beige"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Описание -->
+        <TextView
+            android:id="@+id/textViewUTPDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/exo2_0_light"
+            android:text="Опишите ваше уникальное предложение и целевую аудиторию конкурентов."
+            android:textColor="@color/orange"
+            android:textSize="14sp"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Поле для ввода информации о УТП и целевой аудитории -->
+        <EditText
+            android:id="@+id/editTextUTP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="150dp"
+            android:gravity="top|start"
+            android:background="@drawable/text_field_background"
+            android:hint="Опишите ваше УТП и целевую аудиторию конкурентов..."
+            android:textColorHint="@color/gray_light"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:inputType="textMultiLine"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Кнопка завершения -->
+        <Button
+            android:id="@+id/buttonFinishStep5Stage3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Завершить"
+            android:textColor="#1E1E1E"
+            android:backgroundTint="@color/blue"
+            android:layout_marginBottom="24dp"/>
+
+    </LinearLayout>
+</ScrollView> 
+ 

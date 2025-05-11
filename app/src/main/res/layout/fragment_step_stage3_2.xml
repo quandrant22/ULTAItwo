@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_dark"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- Заголовок -->
+        <TextView
+            android:id="@+id/textViewStepTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/exo2_0_bold"
+            android:text="Шаг 2: Продукты/услуги конкурентов"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Вопрос о продуктах/услугах конкурентов -->
+        <TextView
+            android:id="@+id/textViewCompetitorsProductsTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/exo2_0_medium"
+            android:text="Чем выделяются ваши конкуренты и какие продукты/услуги они предлагают?"
+            android:textColor="@color/beige"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Описание -->
+        <TextView
+            android:id="@+id/textViewCompetitorsProductsDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/exo2_0_light"
+            android:text="Опишите особенности и продукты/услуги ваших конкурентов."
+            android:textColor="@color/orange"
+            android:textSize="14sp"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Поле для ввода информации о продуктах/услугах конкурентов -->
+        <EditText
+            android:id="@+id/editTextCompetitorsProducts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="150dp"
+            android:gravity="top|start"
+            android:background="@drawable/text_field_background"
+            android:hint="Опишите продукты/услуги конкурентов..."
+            android:textColorHint="@color/gray_light"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:inputType="textMultiLine"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Кнопка завершения -->
+        <Button
+            android:id="@+id/buttonFinishStep2Stage3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Завершить"
+            android:textColor="#1E1E1E"
+            android:backgroundTint="@color/blue"
+            android:layout_marginBottom="24dp"/>
+
+    </LinearLayout>
+</ScrollView> 
+ 

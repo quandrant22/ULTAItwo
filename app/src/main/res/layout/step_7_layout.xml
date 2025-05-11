@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/step_7_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    android:layout_marginBottom="15dp"
+    android:background="@drawable/rounded_rectangle_step_dark">
+
+    <TextView
+        android:id="@+id/step_7_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/exo2_0_medium"
+        android:text="Шаг 7"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/step_7_desc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="15dp"
+        android:fontFamily="@font/exo2_0_light"
+        android:text="Какие проблемы или вызовы вы испытываете в настоящее время в своем бизнесе"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/step_7_title"
+        app:layout_constraintTop_toBottomOf="@+id/step_7_title" />
+
+    <TextView
+        android:id="@+id/step_7_action"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="15dp"
+        android:fontFamily="@font/exo2_0_light"
+        android:text="Узнайте об этом подробнее и пройдите опрос для выполнения этого шага"
+        android:textColor="@color/orange"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/step_7_arrow"
+        app:layout_constraintStart_toStartOf="@+id/step_7_desc"
+        app:layout_constraintTop_toBottomOf="@+id/step_7_desc" />
+
+    <ImageView
+        android:id="@+id/step_7_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:src="@drawable/strelka_faza_1"
+        app:layout_constraintBottom_toBottomOf="@+id/step_7_action"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/step_7_action" />
+
+</androidx.constraintlayout.widget.ConstraintLayout> 
+ 
