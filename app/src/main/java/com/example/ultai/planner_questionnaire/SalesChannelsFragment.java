@@ -15,6 +15,7 @@ import com.example.ultai20.R;
 public class SalesChannelsFragment extends BasePlannerQuestionFragment {
 
     private EditText salesChannelsEditText;
+    private static final String KEY_SALES_CHANNELS = "salesChannels";
 
     @Override
     protected int getNextFragmentId() {
@@ -31,13 +32,13 @@ public class SalesChannelsFragment extends BasePlannerQuestionFragment {
         return "Каналы продаж";
     }
 
-    /*
     @Override
     protected void saveData() {
-        String data = salesChannelsEditText.getText().toString();
-        // TODO: Implement saving logic
+        if (salesChannelsEditText != null) {
+            String data = salesChannelsEditText.getText().toString().trim();
+            viewModel.updateAnswer(KEY_SALES_CHANNELS, data);
+        }
     }
-    */
 
     @Nullable
     @Override
@@ -46,7 +47,19 @@ public class SalesChannelsFragment extends BasePlannerQuestionFragment {
         FrameLayout contentContainer = rootView.findViewById(R.id.planner_question_content_container);
         View questionSpecificView = inflater.inflate(R.layout.fragment_planner_sales_channels, contentContainer, false);
         contentContainer.addView(questionSpecificView);
+        
         salesChannelsEditText = questionSpecificView.findViewById(R.id.edittext_sales_channels);
+        
+        // Подгружаем сохраненные данные, если они есть
+        viewModel.getQuestionnaireData().observe(getViewLifecycleOwner(), data -> {
+            if (data != null && data.containsKey(KEY_SALES_CHANNELS)) {
+                String savedData = (String) data.get(KEY_SALES_CHANNELS);
+                if (savedData != null) {
+                    salesChannelsEditText.setText(savedData);
+                }
+            }
+        });
+        
         return rootView;
     }
 } 

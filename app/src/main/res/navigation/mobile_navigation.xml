@@ -718,8 +718,19 @@
 
     <fragment
         android:id="@+id/plannerQuestionnaireFragment"
-        android:name="com.example.ultai.planner_questionnaire.PlannerStepGoalFragment"
-        android:label="Цель бизнеса"
-        tools:layout="@layout/fragment_planner_questionnaire">
+        android:name="com.example.ultai.planner_questionnaire.BusinessGoalFragment"
+        android:label="Анкета планера"
+        tools:layout="@layout/fragment_planner_business_goal">
+        <action
+            android:id="@+id/action_plannerQuestionnaireFragment_to_navigation_planer"
+            app:destination="@id/navigation_planer"
+            app:popUpTo="@id/navigation_planer"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_plannerQuestionnaireFragment_to_businessGoalFragment"
+            app:destination="@id/planner_nav_graph" />
     </fragment>
+
+    <!-- Включаем граф навигации для анкеты планера -->
+    <include android:id="@+id/planner_nav_graph" app:graph="@navigation/planner_nav_graph" />
 </navigation>

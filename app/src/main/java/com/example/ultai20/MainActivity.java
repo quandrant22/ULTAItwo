@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
@@ -102,15 +103,22 @@ public class MainActivity extends AppCompatActivity {
 
             // Получаем родительский граф текущего destination
             NavGraph parentGraph = destination.getParent();
-            boolean isInPlannerGraph = parentGraph != null && parentGraph.getId() == R.id.planner_nav_graph;
+            boolean isInPlannerGraph = (parentGraph != null && parentGraph.getId() == R.id.planner_nav_graph);
+            
+            Log.d(TAG, "Is in planner graph: " + isInPlannerGraph + ", Parent graph ID: " + 
+                       (parentGraph != null ? parentGraph.getId() : "null"));
 
             if (isInPlannerGraph || // Скрываем для всех экранов анкеты
                     destId == R.id.registrationFragment ||
                     destId == R.id.signInFragment ||
                     destId == R.id.firstFragment ||
-                    destId == R.id.basicQuestionnaireFragment) {
+                    destId == R.id.basicQuestionnaireFragment ||
+                    destId == R.id.plannerQuestionnaireFragment) { // Также скрываем для начальной страницы анкеты
                 isNavBarVisibleForDestination = false;
                 hideNavigationBar();
+                
+                // Дополнительная задержка для надежного скрытия
+                new Handler(Looper.getMainLooper()).postDelayed(this::hideNavigationBar, 100);
             } else {
                 isNavBarVisibleForDestination = true;
                 showNavigationBar();
@@ -281,21 +289,47 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void hideNavigationBar() {
+        Log.d(TAG, "Hiding Navigation Bar");
         BottomNavigationView navView = binding.navView;
-        if (navView != null && navView.getVisibility() == View.VISIBLE) {
-            navView.setVisibility(View.GONE);
-            isNavBarVisible = false;
-            Log.d(TAG, "NavBar hidden.");
+        isNavBarVisible = false;
+        
+        // Останавливаем все анимации и делаем надежное скрытие
+        navView.clearAnimation();
+        navView.setVisibility(View.GONE);
+        navView.setEnabled(false);
+        
+        // Уберем место, которое могла бы занимать нижняя панель
+        ViewGroup.LayoutParams layoutParams = navView.getLayoutParams();
+        if (layoutParams instanceof ViewGroup.MarginLayoutParams) {
+            ViewGroup.MarginLayoutParams marginParams = (ViewGroup.MarginLayoutParams) layoutParams;
+            marginParams.height = 0;
+            navView.setLayoutParams(marginParams);
         }
+        
+        // Добавляем повторный вызов с задержкой для предотвращения "мигания" панели
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            if (!isNavBarVisible) { // Проверяем, что статус не изменился
+                navView.setVisibility(View.GONE);
+                navView.setEnabled(false);
+            }
+        }, 50);
     }
 
     public void showNavigationBar() {
+        Log.d(TAG, "Showing Navigation Bar");
         BottomNavigationView navView = binding.navView;
-        if (navView != null && navView.getVisibility() == View.GONE) {
-            navView.setVisibility(View.VISIBLE);
-            isNavBarVisible = true;
-            Log.d(TAG, "NavBar shown.");
+        isNavBarVisible = true;
+        
+        // Восстанавливаем параметры макета перед показом
+        ViewGroup.LayoutParams layoutParams = navView.getLayoutParams();
+        if (layoutParams instanceof ViewGroup.MarginLayoutParams) {
+            ViewGroup.MarginLayoutParams marginParams = (ViewGroup.MarginLayoutParams) layoutParams;
+            marginParams.height = ViewGroup.LayoutParams.WRAP_CONTENT; // или явное значение высоты в dp
+            navView.setLayoutParams(marginParams);
         }
+        
+        navView.setEnabled(true);
+        navView.setVisibility(View.VISIBLE);
     }
 
     private void setupKeyboardListener() {

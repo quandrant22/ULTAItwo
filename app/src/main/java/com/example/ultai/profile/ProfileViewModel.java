@@ -121,17 +121,27 @@ public class ProfileViewModel extends AndroidViewModel {
             @Override
             public void onSuccess(Map<String, Object> profileDataMap) {
                 if (profileDataMap != null) {
+                    // Логирование всех полученных данных
+                    Log.d(TAG, "ProfileData from Firebase: " + profileDataMap.toString());
+                    
                     // Пример извлечения данных, которые могли быть сохранены при регистрации
                     // (кроме registrationTest, которое мы использовали для теста)
                     if (profileDataMap.get("username") != null && tempProfile.getName() == null) { // Если display name не был установлен
                         tempProfile.setName((String) profileDataMap.get("username"));
+                        Log.d(TAG, "Setting name from profile data: " + profileDataMap.get("username"));
                     }
                     if (profileDataMap.get("phone") != null) {
                         tempProfile.setPhone((String) profileDataMap.get("phone"));
+                        Log.d(TAG, "Setting phone from profile data: " + profileDataMap.get("phone"));
+                    } else {
+                        Log.w(TAG, "Phone field is NULL or missing in profile data");
                     }
                     if (profileDataMap.get("gender") != null) {
                         tempProfile.setGender((String) profileDataMap.get("gender"));
+                        Log.d(TAG, "Setting gender from profile data: " + profileDataMap.get("gender"));
                     }
+                } else {
+                    Log.w(TAG, "Profile data is NULL - no data found in Firebase");
                 }
                 // 2. После загрузки профиля, загружаем данные анкеты
                 loadQuestionnaireData(tempProfile);
@@ -162,10 +172,10 @@ public class ProfileViewModel extends AndroidViewModel {
                 }
                 combinedUserProfileLiveData.setValue(buildingProfile);
                 isLoadingLiveData.setValue(false);
-            }
+                        }
 
-            @Override
-            public void onError(String message) {
+                        @Override
+                        public void onError(String message) {
                 Log.e(TAG, "Error loading basic questionnaire data: " + message);
                 errorLiveData.setValue("Ошибка загрузки данных анкеты: " + message);
                  // Даже если анкета не загрузилась, показываем то, что есть (например, из FirebaseUser и /profile)
@@ -174,7 +184,7 @@ public class ProfileViewModel extends AndroidViewModel {
             }
         });
     }
-
+    
     // Метод для сохранения обновленного профиля (если будет режим редактирования)
     public void saveUserProfile(UserProfile updatedProfile) {
         isLoadingLiveData.setValue(true);
@@ -254,7 +264,7 @@ public class ProfileViewModel extends AndroidViewModel {
             isLoadingLiveData.setValue(false);
         }
     }
-
+    
     @Override
     protected void onCleared() {
         super.onCleared();

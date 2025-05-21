@@ -55,15 +55,30 @@ public class ProfileFragment extends Fragment {
         // Загружаем данные при создании или обновлении view
         // viewModel.loadAllProfileData(); // Вызывается в конструкторе ViewModel, но можно добавить кнопку Refresh
     }
-
+    
     private void setupUI() {
         // Кнопки Назад и Настройки
         binding.imageButton.setOnClickListener(v -> navController.popBackStack());
         binding.imageView19.setOnClickListener(v -> navController.navigate(R.id.action_profileFragment_to_settingsFragment));
         // Кнопка Редактировать/Сохранить
         binding.imageView20.setOnClickListener(v -> viewModel.toggleEditMode());
+        
+        // Добавим обработчик длительного нажатия на поле телефона для принудительного обновления
+        binding.editTextPhone2.setOnLongClickListener(v -> {
+            if (binding.editTextPhone2.isEnabled()) {
+                updatePhoneManually();
+                return true;
+            }
+            return false;
+        });
+        
+        // Добавим обработчик длительного нажатия на имя в заголовке для обновления данных профиля
+        binding.textView29.setOnLongClickListener(v -> {
+            refreshProfileData();
+            return true;
+        });
     }
-
+    
     private void setupObservers() {
         // Наблюдение за FirebaseUser
         viewModel.getFirebaseUserLiveData().observe(getViewLifecycleOwner(), firebaseUser -> {
@@ -108,12 +123,12 @@ public class ProfileFragment extends Fragment {
                 // ... и так далее для других полей анкеты ...
             }
         });
-
+        
         // Наблюдение за режимом редактирования
         viewModel.getIsEditModeLiveData().observe(getViewLifecycleOwner(), isEditMode -> {
             setEditMode(isEditMode);
         });
-
+        
         // Наблюдение за состоянием загрузки
         viewModel.getIsLoadingLiveData().observe(getViewLifecycleOwner(), isLoading -> {
             // TODO: Добавьте ProgressBar в XML с ID progressBarProfile
@@ -121,7 +136,7 @@ public class ProfileFragment extends Fragment {
             //      binding.progressBarProfile.setVisibility(isLoading ? View.VISIBLE : View.GONE);
             // }
         });
-
+        
         // Наблюдение за сообщениями об ошибках
         viewModel.getErrorLiveData().observe(getViewLifecycleOwner(), errorMessage -> {
             if (errorMessage != null && !errorMessage.isEmpty()) {
@@ -159,7 +174,7 @@ public class ProfileFragment extends Fragment {
              saveProfileDataIfChanged();
          }
     }
-
+    
     private void setupListeners() {
         // Обработка системной кнопки "Назад"
         requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), new OnBackPressedCallback(true) {
@@ -177,16 +192,16 @@ public class ProfileFragment extends Fragment {
             }
         });
     }
-
+    
     private void saveProfileDataIfChanged() {
         ProfileViewModel.UserProfile currentCombinedProfile = viewModel.getCombinedUserProfileLiveData().getValue();
         FirebaseUser currentFirebaseUser = viewModel.getFirebaseUserLiveData().getValue();
 
         if (currentCombinedProfile == null) {
              Log.w("ProfileFragment", "Cannot save profile, currentCombinedProfile is null");
-             return; 
+            return;
         }
-
+        
         // Собираем новые данные из полей ввода
         String newName = binding.editTextTextName.getText().toString();
         String newPhone = binding.editTextPhone2.getText().toString();
@@ -196,7 +211,7 @@ public class ProfileFragment extends Fragment {
         String newCompanyName = ""; // = binding.companyNameEditText.getText().toString();
         String newActivityType = ""; // = binding.activityTypeEditText.getText().toString();
         String newProductsDesc = ""; // = binding.productsServicesDescEditText.getText().toString();
-
+        
         // Создаем объект с обновленными данными
         ProfileViewModel.UserProfile updatedProfileData = new ProfileViewModel.UserProfile();
         if (currentFirebaseUser != null) {
@@ -239,6 +254,57 @@ public class ProfileFragment extends Fragment {
         if (s1 == null && s2 == null) return true;
         if (s1 == null || s2 == null) return false;
         return s1.equals(s2);
+    }
+
+    // Метод для принудительного обновления телефона
+    private void updatePhoneManually() {
+        String phone = binding.editTextPhone2.getText().toString().trim();
+        if (phone.isEmpty()) {
+            Snackbar.make(binding.getRoot(), "Введите номер телефона", Snackbar.LENGTH_SHORT).show();
+            return;
+        }
+        
+        UserRepository userRepository = UserRepository.getInstance();
+        
+        // Показываем индикатор загрузки
+        Snackbar loadingSnackbar = Snackbar.make(binding.getRoot(), "Обновление телефона...", Snackbar.LENGTH_INDEFINITE);
+        loadingSnackbar.show();
+        
+        userRepository.forceUpdateUserPhone(phone, new UserRepository.Callback<Void>() {
+            @Override
+            public void onSuccess(Void result) {
+                if (isAdded() && getActivity() != null) {
+                    getActivity().runOnUiThread(() -> {
+                        loadingSnackbar.dismiss();
+                        Snackbar.make(binding.getRoot(), "Телефон успешно обновлен", Snackbar.LENGTH_SHORT).show();
+                        // Перезагружаем данные профиля
+                        viewModel.loadAllProfileData();
+                    });
+                }
+            }
+
+            @Override
+            public void onError(String message) {
+                if (isAdded() && getActivity() != null) {
+                    getActivity().runOnUiThread(() -> {
+                        loadingSnackbar.dismiss();
+                        Snackbar.make(binding.getRoot(), "Ошибка: " + message, Snackbar.LENGTH_LONG).show();
+                    });
+                }
+            }
+        });
+    }
+
+    // Метод для обновления данных профиля
+    private void refreshProfileData() {
+        Snackbar loadingSnackbar = Snackbar.make(binding.getRoot(), "Обновление данных профиля...", Snackbar.LENGTH_SHORT);
+        loadingSnackbar.show();
+        
+        // Запускаем обновление данных профиля
+        viewModel.loadAllProfileData();
+        
+        // Логируем для отладки
+        Log.d("ProfileFragment", "Manually refreshing profile data");
     }
 
     @Override

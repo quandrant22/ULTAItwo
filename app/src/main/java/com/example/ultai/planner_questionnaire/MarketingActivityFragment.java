@@ -15,6 +15,7 @@ import com.example.ultai20.R;
 public class MarketingActivityFragment extends BasePlannerQuestionFragment {
 
     private EditText marketingActivityEditText;
+    private static final String KEY_MARKETING_ACTIVITY = "marketingActivity";
 
     @Override
     protected int getNextFragmentId() {
@@ -28,16 +29,16 @@ public class MarketingActivityFragment extends BasePlannerQuestionFragment {
 
     @Override
     protected String getPageTitle() {
-        return "Маркетинговая деятельность";
+        return "Маркетинговая активность";
     }
 
-    /*
     @Override
     protected void saveData() {
-        String data = marketingActivityEditText.getText().toString();
-        // TODO: Implement saving logic
+        if (marketingActivityEditText != null) {
+            String data = marketingActivityEditText.getText().toString().trim();
+            viewModel.updateAnswer(KEY_MARKETING_ACTIVITY, data);
+        }
     }
-    */
 
     @Nullable
     @Override
@@ -46,7 +47,19 @@ public class MarketingActivityFragment extends BasePlannerQuestionFragment {
         FrameLayout contentContainer = rootView.findViewById(R.id.planner_question_content_container);
         View questionSpecificView = inflater.inflate(R.layout.fragment_planner_marketing_activity, contentContainer, false);
         contentContainer.addView(questionSpecificView);
+        
         marketingActivityEditText = questionSpecificView.findViewById(R.id.edittext_marketing_activity);
+        
+        // Подгружаем сохраненные данные, если они есть
+        viewModel.getQuestionnaireData().observe(getViewLifecycleOwner(), data -> {
+            if (data != null && data.containsKey(KEY_MARKETING_ACTIVITY)) {
+                String savedData = (String) data.get(KEY_MARKETING_ACTIVITY);
+                if (savedData != null) {
+                    marketingActivityEditText.setText(savedData);
+                }
+            }
+        });
+        
         return rootView;
     }
 } 

@@ -15,6 +15,7 @@ import com.example.ultai20.R;
 public class PastMarketingActivityFragment extends BasePlannerQuestionFragment {
 
     private EditText pastMarketingActivityEditText;
+    private static final String KEY_PAST_MARKETING_ACTIVITY = "pastMarketingActivity";
 
     @Override
     protected int getNextFragmentId() {
@@ -28,16 +29,16 @@ public class PastMarketingActivityFragment extends BasePlannerQuestionFragment {
 
     @Override
     protected String getPageTitle() {
-        return "Прошлая маркетинговая деятельность";
+        return "Предыдущая маркетинговая активность";
     }
 
-    /*
     @Override
     protected void saveData() {
-        String data = pastMarketingActivityEditText.getText().toString();
-        // TODO: Implement saving logic
+        if (pastMarketingActivityEditText != null) {
+            String data = pastMarketingActivityEditText.getText().toString().trim();
+            viewModel.updateAnswer(KEY_PAST_MARKETING_ACTIVITY, data);
+        }
     }
-    */
 
     @Nullable
     @Override
@@ -46,7 +47,19 @@ public class PastMarketingActivityFragment extends BasePlannerQuestionFragment {
         FrameLayout contentContainer = rootView.findViewById(R.id.planner_question_content_container);
         View questionSpecificView = inflater.inflate(R.layout.fragment_planner_past_marketing_activity, contentContainer, false);
         contentContainer.addView(questionSpecificView);
+        
         pastMarketingActivityEditText = questionSpecificView.findViewById(R.id.edittext_past_marketing_activity);
+        
+        // Подгружаем сохраненные данные, если они есть
+        viewModel.getQuestionnaireData().observe(getViewLifecycleOwner(), data -> {
+            if (data != null && data.containsKey(KEY_PAST_MARKETING_ACTIVITY)) {
+                String savedData = (String) data.get(KEY_PAST_MARKETING_ACTIVITY);
+                if (savedData != null) {
+                    pastMarketingActivityEditText.setText(savedData);
+                }
+            }
+        });
+        
         return rootView;
     }
 } 

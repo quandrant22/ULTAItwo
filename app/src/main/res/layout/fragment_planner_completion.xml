@@ -3,14 +3,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
     android:padding="16dp">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Анкета завершена! Спасибо за предоставленную информацию. Нажмите 'Завершить' для сохранения и выхода, или перейдите к чату с ИИ для дальнейшей работы."
+        android:text="Спасибо за заполнение анкеты. Вот сводка ваших ответов:"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:gravity="center_horizontal"/>
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:id="@+id/text_completion_summary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    </ScrollView>
 
 </LinearLayout> 

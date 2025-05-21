@@ -3,6 +3,7 @@ package com.example.ultai.planer;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -89,6 +90,19 @@ public class PlanerFragment extends Fragment {
                     try {
                         if (navController.getCurrentDestination() != null && navController.getCurrentDestination().getId() == R.id.navigation_planer) {
                             navController.navigate(R.id.action_navigation_planer_to_plannerQuestionnaireFragment);
+                            
+                            // Добавим задержку для перехода в граф анкеты после загрузки промежуточного фрагмента
+                            new Handler().postDelayed(() -> {
+                                try {
+                                    if (navController.getCurrentDestination() != null && 
+                                        navController.getCurrentDestination().getId() == R.id.plannerQuestionnaireFragment) {
+                                        // Переходим к BusinessGoalFragment, который находится в planner_nav_graph
+                                        navController.navigate(R.id.action_plannerQuestionnaireFragment_to_businessGoalFragment);
+                                    }
+                                } catch (Exception e) {
+                                    Log.e(TAG, "Navigation to businessGoalFragment from plannerQuestionnaireFragment failed", e);
+                                }
+                            }, 100); // Небольшая задержка для завершения первого перехода
                         }
                     } catch (Exception e) {
                         Log.e(TAG, "Navigation to plannerQuestionnaireFragment failed", e);

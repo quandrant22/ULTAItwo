@@ -122,6 +122,22 @@ public class RegistrationFragment extends Fragment {
             @Override
             public void onSuccess(FirebaseUser result) {
                 if (getActivity() != null) {
+                    // Проверка и принудительное сохранение телефона
+                    if (result != null && phone != null && !phone.trim().isEmpty()) {
+                        // Дополнительное сохранение телефона для надежности
+                        userRepository.forceUpdateUserPhone(phone, new UserRepository.Callback<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Log.d("RegistrationFragment", "Phone successfully saved: " + phone);
+                            }
+
+                            @Override
+                            public void onError(String message) {
+                                Log.e("RegistrationFragment", "Failed to save phone: " + message);
+                            }
+                        });
+                    }
+                    
                     getActivity().runOnUiThread(() -> {
                         if (binding.progressBar != null) {
                             binding.progressBar.setVisibility(View.GONE);

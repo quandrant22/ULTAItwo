@@ -18,11 +18,12 @@ import com.example.ultai20.R;
 public class BusinessGoalFragment extends BasePlannerQuestionFragment {
 
     private EditText businessGoalEditText;
+    private static final String KEY_BUSINESS_GOAL = "businessGoal";
 
     @Override
     protected int getNextFragmentId() {
-        // ID следующего фрагмента из planner_nav_graph.xml (пока не создан)
-        return R.id.action_businessGoalFragment_to_salesAnalysisFragment; // Пример ID, нужно будет создать
+        // ID действия навигации из planner_nav_graph.xml
+        return R.id.action_businessGoalFragment_to_salesAnalysisFragment;
     }
 
     @Override
@@ -33,6 +34,14 @@ public class BusinessGoalFragment extends BasePlannerQuestionFragment {
     @Override
     protected String getPageTitle() {
         return "Цель бизнеса";
+    }
+
+    @Override
+    protected void saveData() {
+        if (businessGoalEditText != null) {
+            String goal = businessGoalEditText.getText().toString().trim();
+            viewModel.updateAnswer(KEY_BUSINESS_GOAL, goal);
+        }
     }
 
     /* Раскомментируем, когда будет готова логика сохранения
@@ -63,6 +72,16 @@ public class BusinessGoalFragment extends BasePlannerQuestionFragment {
         contentContainer.addView(questionSpecificView);
         
         businessGoalEditText = questionSpecificView.findViewById(R.id.edittext_business_goal);
+        
+        // Подгружаем сохраненные данные, если они есть
+        viewModel.getQuestionnaireData().observe(getViewLifecycleOwner(), data -> {
+            if (data != null && data.containsKey(KEY_BUSINESS_GOAL)) {
+                String savedGoal = (String) data.get(KEY_BUSINESS_GOAL);
+                if (savedGoal != null) {
+                    businessGoalEditText.setText(savedGoal);
+                }
+            }
+        });
         
         return rootView;
     }

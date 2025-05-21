@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Проведите анализ вашей компании. Каковы ваши сильные и слабые стороны (SWOT-анализ по возможности)? Кто ваши основные конкуренты?"
+        android:text="Опишите вашу компанию. Какие основные преимущества и недостатки? Какие ресурсы имеются? Какие факторы влияют на эффективность?"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <EditText

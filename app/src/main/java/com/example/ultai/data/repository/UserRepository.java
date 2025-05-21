@@ -123,27 +123,42 @@ public class UserRepository {
 
                             // 2. Сохранить ОЧЕНЬ ПРОСТЫЕ данные профиля в Realtime Database (для теста)
                              Log.d(TAG, "register: Attempting to save VERY SIMPLE profile data to RTDB...");
-                            Map<String, Object> testProfileData = new HashMap<>();
-                            testProfileData.put("registrationTest", "success");
-                            // initialProfileData.put("username", username);
-                            // initialProfileData.put("email", email); // Дублируем email для удобства
-                            // initialProfileData.put("phone", phone);
-                            // initialProfileData.put("gender", gender);
-                            // ... остальные поля закомментированы ...
+                            Map<String, Object> profileData = new HashMap<>();
+                            profileData.put("username", username);
+                            profileData.put("email", email); // Дублируем email для удобства
+                            
+                            // Дополнительные проверки для телефона
+                            if (phone != null && !phone.trim().isEmpty()) {
+                                Log.d(TAG, "register: Adding valid phone number: '" + phone + "'");
+                                profileData.put("phone", phone);
+                            } else {
+                                Log.w(TAG, "register: Phone is empty or null, not adding to profile data");
+                            }
+                            
+                            profileData.put("gender", gender);
+                            // Добавим метку успешной регистрации для обратной совместимости
+                            profileData.put("registrationTest", "success");
+                            
+                            // Логируем данные профиля для отладки
+                            Log.d(TAG, "register: Profile data to save: " + profileData.toString());
+                            Log.d(TAG, "register: Phone value being saved: " + profileData.get("phone"));
 
                             // --- Логируем ТОЧНЫЙ ПУТЬ перед записью ---
                             DatabaseReference profileRef = databaseReference.child(USERS_NODE).child(firebaseUser.getUid()).child(PROFILE_NODE);
                             Log.d(TAG, "register: Attempting to setValue at path: " + profileRef.toString());
 
                             profileRef
-                                    // .setValue(initialProfileData) // Используем тестовые данные
-                                    .setValue(testProfileData)
+                                    .setValue(profileData) // Используем настоящие данные профиля
                                     .addOnCompleteListener(dbTask -> {
                                         // --- Добавлен лог в НАЧАЛЕ колбэка --- 
                                         Log.d(TAG, "register: RTDB setValue -> INSIDE onComplete listener."); 
                                         Log.d(TAG, "register: RTDB setValue task completed.");
                                         if (dbTask.isSuccessful()) {
                                             Log.d(TAG, "register: RTDB setValue SUCCESS. Calling external onSuccess.");
+                                            
+                                            // Дополнительная проверка сохраненных данных
+                                            verifyProfileDataSaved(firebaseUser.getUid(), profileData);
+                                            
                                             callback.onSuccess(firebaseUser); // Успех после сохранения в RTDB
                                         } else {
                                             // Эта ветка может не вызваться, если сработает onFailureListener
@@ -245,9 +260,9 @@ public class UserRepository {
                  }
              }
              callback.onSuccess(null); // Считаем выход успешным, т.к. пользователя и так не было
-             return;
-         }
-
+                    return;
+                }
+                
          Log.d(TAG, "logout: Attempting to reset planner progress for user: " + userId + " BEFORE signOut.");
          resetPlannerProgress(new Callback<Void>() {
              @Override
@@ -316,29 +331,39 @@ public class UserRepository {
               callback.onError("Пользователь не аутентифицирован.");
               return;
           }
+          Log.d(TAG, "getUserProfile: Fetching profile data for userId: " + userId);
           databaseReference.child(USERS_NODE).child(userId).child(PROFILE_NODE)
                   .addListenerForSingleValueEvent(new ValueEventListener() {
                       @Override
                       public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                          Log.d(TAG, "getUserProfile.onDataChange: Snapshot exists: " + dataSnapshot.exists());
                           if (dataSnapshot.exists()) {
                               try {
                                   @SuppressWarnings("unchecked") // Безопасно, т.к. мы ожидаем Map
                                   Map<String, Object> profileData = (Map<String, Object>) dataSnapshot.getValue();
-                                  Log.d(TAG, "User profile data fetched from RTDB.");
+                                  Log.d(TAG, "getUserProfile: Profile data fetched successfully: " + (profileData != null ? profileData.toString() : "null"));
+                                  // Проверяем наличие ключевых полей
+                                  if (profileData != null) {
+                                      Log.d(TAG, "getUserProfile: Profile data contains phone: " + profileData.containsKey("phone"));
+                                      if (profileData.containsKey("phone")) {
+                                          Log.d(TAG, "getUserProfile: Phone value: " + profileData.get("phone"));
+                                      }
+                                  }
+                                  Log.d(TAG, "getUserProfile: User profile data fetched from RTDB.");
                                   callback.onSuccess(profileData);
                               } catch (Exception e) {
-                                   Log.e(TAG, "Error parsing profile data", e);
+                                   Log.e(TAG, "getUserProfile: Error parsing profile data", e);
                                    callback.onError("Ошибка чтения данных профиля.");
                               }
                     } else {
-                              Log.w(TAG, "User profile node does not exist in RTDB for UID: " + userId);
+                              Log.w(TAG, "getUserProfile: User profile node does not exist in RTDB for UID: " + userId);
                               callback.onSuccess(null); // Узел не найден, возвращаем null
                           }
                       }
 
                       @Override
                       public void onCancelled(@NonNull DatabaseError databaseError) {
-                          Log.e(TAG, "Failed to fetch user profile data from RTDB.", databaseError.toException());
+                          Log.e(TAG, "getUserProfile: Failed to fetch user profile data from RTDB.", databaseError.toException());
                           callback.onError("Ошибка загрузки профиля: " + databaseError.getMessage());
                       }
                   });
@@ -369,8 +394,8 @@ public class UserRepository {
          stepRef.setValue(stepData).addOnCompleteListener(task -> {
              if (task.isSuccessful()) {
                  Log.d(TAG, "Step progress saved: " + phaseId + "/" + stageId + "/" + stepId);
-                 callback.onSuccess(null);
-             } else {
+                    callback.onSuccess(null);
+                } else {
                  Log.e(TAG, "Failed to save step progress.", task.getException());
                  callback.onError("Ошибка сохранения прогресса шага: " + (task.getException() != null ? task.getException().getMessage() : "Unknown DB error"));
             }
@@ -476,10 +501,10 @@ public class UserRepository {
                 public void onCancelled(@NonNull DatabaseError databaseError) {
                     Log.e(TAG, "getBasicQuestionnaireData: Failed to fetch data for user: " + userId, databaseError.toException());
                     callback.onError("Ошибка загрузки данных анкеты: " + databaseError.getMessage());
-                }
-            });
+            }
+        });
     }
-
+    
     /**
      * Сохраняет данные анкеты планировщика для текущего пользователя.
      * @param plannerData Карта с данными анкеты планера.
@@ -488,25 +513,46 @@ public class UserRepository {
     public void savePlannerQuestionnaireData(Map<String, Object> plannerData, final Callback<Void> callback) {
         String userId = getCurrentUserId();
         if (userId == null) {
+            Log.e(TAG, "savePlannerQuestionnaireData: Ошибка - пользователь не аутентифицирован");
             callback.onError("Пользователь не аутентифицирован для сохранения анкеты планера.");
             return;
         }
-        Log.d(TAG, "savePlannerQuestionnaireData: Attempting to save data for user: " + userId);
+        
+        // Проверка содержимого данных
+        if (plannerData == null || plannerData.isEmpty()) {
+            Log.e(TAG, "savePlannerQuestionnaireData: Ошибка - переданные данные пусты");
+            callback.onError("Нельзя сохранить пустые данные анкеты планера.");
+            return;
+        }
+        
+        // Добавляем метку последнего обновления на всякий случай
+        if (!plannerData.containsKey("updated_at")) {
+            plannerData.put("updated_at", System.currentTimeMillis());
+        }
+        
+        Log.d(TAG, "savePlannerQuestionnaireData: Пытаемся сохранить данные анкеты планера для пользователя: " + userId);
+        Log.d(TAG, "savePlannerQuestionnaireData: Размер данных для сохранения: " + plannerData.size());
+        
         DatabaseReference plannerRef = databaseReference.child(USERS_NODE).child(userId).child(PLANNER_QUESTIONNAIRE_NODE);
+        
+        // Логируем полный путь для отладки
+        Log.d(TAG, "savePlannerQuestionnaireData: Полный путь для сохранения: " + plannerRef.toString());
 
         plannerRef.setValue(plannerData)
-            .addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    Log.d(TAG, "savePlannerQuestionnaireData: Data saved successfully for user: " + userId);
-                    callback.onSuccess(null);
-                } else {
-                    Log.e(TAG, "savePlannerQuestionnaireData: Failed to save data for user: " + userId, task.getException());
-                    callback.onError("Ошибка сохранения данных анкеты планера: " + (task.getException() != null ? task.getException().getMessage() : "Unknown DB error"));
-                }
+            .addOnSuccessListener(aVoid -> {
+                Log.d(TAG, "savePlannerQuestionnaireData: Данные анкеты планера успешно сохранены для пользователя: " + userId);
+                callback.onSuccess(null);
             })
             .addOnFailureListener(e -> {
-                Log.e(TAG, "savePlannerQuestionnaireData: Exception while saving data for user: " + userId, e);
-                callback.onError("Исключение при сохранении данных анкеты планера: " + e.getMessage());
+                Log.e(TAG, "savePlannerQuestionnaireData: Ошибка при сохранении данных анкеты планера: ", e);
+                callback.onError("Ошибка сохранения анкеты планера: " + e.getMessage());
+            })
+            .addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    Log.d(TAG, "savePlannerQuestionnaireData: Задача сохранения завершена успешно");
+                } else {
+                    Log.e(TAG, "savePlannerQuestionnaireData: Задача сохранения завершена с ошибкой", task.getException());
+                }
             });
     }
 
@@ -536,7 +582,7 @@ public class UserRepository {
         });
     }
     
-     /**
+    /**
       * Загружает данные анкеты планировщика (если они понадобятся для предзаполнения или просмотра).
       * @param callback Callback с результатом (Карта с данными или null).
       */
@@ -572,4 +618,89 @@ public class UserRepository {
         });
      }
 
+    /**
+     * Вспомогательный метод для проверки сохраненных данных профиля.
+     * @param userId ID пользователя
+     * @param expectedData Ожидаемые данные
+     */
+    private void verifyProfileDataSaved(String userId, Map<String, Object> expectedData) {
+        Log.d(TAG, "verifyProfileDataSaved: Verifying saved profile data...");
+        databaseReference.child(USERS_NODE).child(userId).child(PROFILE_NODE)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            try {
+                                @SuppressWarnings("unchecked")
+                                Map<String, Object> savedData = (Map<String, Object>) dataSnapshot.getValue();
+                                if (savedData != null) {
+                                    Log.d(TAG, "verifyProfileDataSaved: Saved data: " + savedData.toString());
+                                    // Проверяем наличие телефона
+                                    if (savedData.containsKey("phone")) {
+                                        Log.d(TAG, "verifyProfileDataSaved: Phone found: " + savedData.get("phone"));
+                                    } else {
+                                        Log.w(TAG, "verifyProfileDataSaved: Phone field MISSING!");
+                                    }
+                                    // Проверяем соответствие с ожидаемыми данными
+                                    boolean allMatched = true;
+                                    for (String key : expectedData.keySet()) {
+                                        if (!savedData.containsKey(key) || !expectedData.get(key).equals(savedData.get(key))) {
+                                            Log.w(TAG, "verifyProfileDataSaved: Mismatch for key '" + key + 
+                                                    "', expected: " + expectedData.get(key) + 
+                                                    ", actual: " + (savedData.containsKey(key) ? savedData.get(key) : "MISSING"));
+                                            allMatched = false;
+                                        }
+                                    }
+                                    if (allMatched) {
+                                        Log.d(TAG, "verifyProfileDataSaved: All data matched as expected!");
+                                    } else {
+                                        Log.w(TAG, "verifyProfileDataSaved: Some data did not match!");
+                                    }
+                                } else {
+                                    Log.w(TAG, "verifyProfileDataSaved: Saved data is NULL!");
+                                }
+                            } catch (Exception e) {
+                                Log.e(TAG, "verifyProfileDataSaved: Error parsing saved data", e);
+                            }
+                        } else {
+                            Log.w(TAG, "verifyProfileDataSaved: Node does not exist!");
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Log.e(TAG, "verifyProfileDataSaved: Error verifying data", databaseError.toException());
+                    }
+                });
+    }
+
+    /**
+     * Принудительно обновляет номер телефона в профиле пользователя.
+     * @param phone Номер телефона
+     * @param callback Callback о завершении
+     */
+    public void forceUpdateUserPhone(String phone, final Callback<Void> callback) {
+        String userId = getCurrentUserId();
+        if (userId == null) {
+            Log.e(TAG, "forceUpdateUserPhone: No user ID available");
+            callback.onError("Пользователь не аутентифицирован.");
+            return;
+        }
+        
+        Log.d(TAG, "forceUpdateUserPhone: Forcing phone update for user: " + userId + ", phone: " + phone);
+        
+        Map<String, Object> updates = new HashMap<>();
+        updates.put("phone", phone);
+        
+        DatabaseReference profileRef = databaseReference.child(USERS_NODE).child(userId).child(PROFILE_NODE);
+        profileRef.updateChildren(updates)
+                .addOnSuccessListener(aVoid -> {
+                    Log.d(TAG, "forceUpdateUserPhone: Phone successfully updated for user: " + userId);
+                    callback.onSuccess(null);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e(TAG, "forceUpdateUserPhone: Failed to update phone for user: " + userId, e);
+                    callback.onError("Ошибка обновления телефона: " + e.getMessage());
+                });
+    }
 } 

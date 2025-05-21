@@ -59,7 +59,7 @@
     <string name="profile_edit_mode">Режим редактирования</string>
     <string name="profile_title">Мой аккаунт</string>
     <string name="profile_personal_data">Личные данные</string>
-    <string name="profile_name">Ваше имя</string>
+    <string name="profile_name">Имя пользователя</string>
     <string name="profile_phone">Номер телефона</string>
     <string name="profile_email">Электронный адрес</string>
     <string name="profile_edit">Редактировать</string>

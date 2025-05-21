@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Расскажите о прошлой маркетинговой деятельности. Какие кампании были успешными, а какие нет? Какие уроки вы извлекли?"
+        android:text="Опишите ваши предыдущие маркетинговые кампании. Что работало хорошо? Какие были неудачные решения? Какие выводы вы сделали?"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <EditText
@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:hint="Опишите прошлый опыт"
+        android:hint="Введите данные о предыдущих маркетинговых кампаниях"
         android:inputType="textMultiLine"
         android:minLines="3" />
 

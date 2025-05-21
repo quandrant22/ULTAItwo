@@ -15,6 +15,7 @@ import com.example.ultai20.R;
 public class TechnicalAnalyticsFragment extends BasePlannerQuestionFragment {
 
     private EditText technicalAnalyticsEditText;
+    private static final String KEY_TECHNICAL_ANALYTICS = "technicalAnalytics";
 
     @Override
     protected int getNextFragmentId() {
@@ -28,16 +29,16 @@ public class TechnicalAnalyticsFragment extends BasePlannerQuestionFragment {
 
     @Override
     protected String getPageTitle() {
-        return "Техническая аналитика";
+        return "Технический анализ";
     }
 
-    /*
     @Override
     protected void saveData() {
-        String data = technicalAnalyticsEditText.getText().toString();
-        // TODO: Implement saving logic
+        if (technicalAnalyticsEditText != null) {
+            String data = technicalAnalyticsEditText.getText().toString().trim();
+            viewModel.updateAnswer(KEY_TECHNICAL_ANALYTICS, data);
+        }
     }
-    */
 
     @Nullable
     @Override
@@ -46,7 +47,19 @@ public class TechnicalAnalyticsFragment extends BasePlannerQuestionFragment {
         FrameLayout contentContainer = rootView.findViewById(R.id.planner_question_content_container);
         View questionSpecificView = inflater.inflate(R.layout.fragment_planner_technical_analytics, contentContainer, false);
         contentContainer.addView(questionSpecificView);
+        
         technicalAnalyticsEditText = questionSpecificView.findViewById(R.id.edittext_technical_analytics);
+        
+        // Подгружаем сохраненные данные, если они есть
+        viewModel.getQuestionnaireData().observe(getViewLifecycleOwner(), data -> {
+            if (data != null && data.containsKey(KEY_TECHNICAL_ANALYTICS)) {
+                String savedData = (String) data.get(KEY_TECHNICAL_ANALYTICS);
+                if (savedData != null) {
+                    technicalAnalyticsEditText.setText(savedData);
+                }
+            }
+        });
+        
         return rootView;
     }
 } 

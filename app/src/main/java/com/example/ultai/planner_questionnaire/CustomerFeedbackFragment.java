@@ -15,6 +15,7 @@ import com.example.ultai20.R;
 public class CustomerFeedbackFragment extends BasePlannerQuestionFragment {
 
     private EditText customerFeedbackEditText;
+    private static final String KEY_CUSTOMER_FEEDBACK = "customerFeedback";
 
     @Override
     protected int getNextFragmentId() {
@@ -28,16 +29,16 @@ public class CustomerFeedbackFragment extends BasePlannerQuestionFragment {
 
     @Override
     protected String getPageTitle() {
-        return "Отзывы клиентов";
+        return "Обратная связь от клиентов";
     }
 
-    /*
     @Override
     protected void saveData() {
-        String data = customerFeedbackEditText.getText().toString();
-        // TODO: Implement saving logic
+        if (customerFeedbackEditText != null) {
+            String data = customerFeedbackEditText.getText().toString().trim();
+            viewModel.updateAnswer(KEY_CUSTOMER_FEEDBACK, data);
+        }
     }
-    */
 
     @Nullable
     @Override
@@ -46,7 +47,19 @@ public class CustomerFeedbackFragment extends BasePlannerQuestionFragment {
         FrameLayout contentContainer = rootView.findViewById(R.id.planner_question_content_container);
         View questionSpecificView = inflater.inflate(R.layout.fragment_planner_customer_feedback, contentContainer, false);
         contentContainer.addView(questionSpecificView);
+        
         customerFeedbackEditText = questionSpecificView.findViewById(R.id.edittext_customer_feedback);
+        
+        // Подгружаем сохраненные данные, если они есть
+        viewModel.getQuestionnaireData().observe(getViewLifecycleOwner(), data -> {
+            if (data != null && data.containsKey(KEY_CUSTOMER_FEEDBACK)) {
+                String savedData = (String) data.get(KEY_CUSTOMER_FEEDBACK);
+                if (savedData != null) {
+                    customerFeedbackEditText.setText(savedData);
+                }
+            }
+        });
+        
         return rootView;
     }
 } 

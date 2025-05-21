@@ -62,25 +62,37 @@ public class PlannerQuestionnaireViewModel extends ViewModel {
     public void saveFinalQuestionnaire() {
         Map<String, Object> finalData = questionnaireData.getValue();
         if (finalData == null || finalData.isEmpty()) {
+            Log.e(TAG, "saveFinalQuestionnaire: Нет данных для сохранения.");
             errorMessage.setValue("Нет данных для сохранения.");
             return;
         }
 
+        Log.d(TAG, "saveFinalQuestionnaire: Начинаем процесс сохранения анкеты планера. Размер данных: " + finalData.size());
+        // Добавляем специальную метку времени для отслеживания последнего сохранения
+        finalData.put("lastSavedTimestamp", System.currentTimeMillis());
+        finalData.put("completed", true);
+        
         isLoading.setValue(true);
         errorMessage.setValue(null);
         saveSuccess.setValue(false);
 
+        // Временно записываем данные в лог для отладки
+        for (Map.Entry<String, Object> entry : finalData.entrySet()) {
+            Log.d(TAG, "saveFinalQuestionnaire: Сохраняемые данные [" + entry.getKey() + "] = " + 
+                (entry.getValue() != null ? entry.getValue().toString() : "null"));
+        }
+
         userRepository.savePlannerQuestionnaireData(finalData, new UserRepository.Callback<Void>() {
             @Override
             public void onSuccess(Void result) {
-                Log.d(TAG, "Planner questionnaire data saved successfully.");
+                Log.d(TAG, "saveFinalQuestionnaire: Анкета планера успешно сохранена в Firebase.");
                 isLoading.setValue(false);
-                saveSuccess.setValue(true); // Устанавливаем флаг успеха
+                saveSuccess.setValue(true);
             }
 
             @Override
             public void onError(String message) {
-                Log.e(TAG, "Error saving planner questionnaire data: " + message);
+                Log.e(TAG, "saveFinalQuestionnaire: Ошибка при сохранении анкеты планера: " + message);
                 errorMessage.setValue(message);
                 isLoading.setValue(false);
                 saveSuccess.setValue(false);

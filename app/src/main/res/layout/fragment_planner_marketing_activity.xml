@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Опишите вашу текущую маркетинговую деятельность. Какие каналы вы используете? Какие активности проводите?"
+        android:text="Опишите текущую маркетинговую активность вашей компании. Какие маркетинговые каналы вы используете? В чем их эффективность?"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <EditText
@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:hint="Опишите деятельность"
+        android:hint="Введите данные о маркетинговой деятельности"
         android:inputType="textMultiLine"
         android:minLines="3" />
 
