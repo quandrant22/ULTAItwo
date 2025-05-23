@@ -43,6 +43,8 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.navigation.NavController;
+
 public class UltaiFragment extends Fragment {
     private static final String TAG = "UltaiFragment";
     private RecyclerView recyclerView;
@@ -143,8 +145,38 @@ public class UltaiFragment extends Fragment {
         refreshNewsButton.setVisibility(View.GONE);
 
         backButton.setOnClickListener(v -> {
-            if (getActivity() != null) {
-                getActivity().getSupportFragmentManager().popBackStack();
+            Log.d(TAG, "Back button clicked");
+            
+            if (getActivity() != null && getActivity() instanceof MainActivity) {
+                MainActivity mainActivity = (MainActivity) getActivity();
+                NavController navController = mainActivity.navController;
+                
+                try {
+                    // Получаем сохраненную предыдущую страницу
+                    int lastNonUltaiDestination = mainActivity.getLastNonUltaiDestination();
+                    Log.d(TAG, "Last non-Ultai destination: " + lastNonUltaiDestination);
+                    
+                    // Переходим к сохраненной предыдущей странице
+                    BottomNavigationView bottomNav = mainActivity.findViewById(R.id.nav_view);
+                    if (bottomNav != null && lastNonUltaiDestination != R.id.navigation_ultai) {
+                        bottomNav.setSelectedItemId(lastNonUltaiDestination);
+                        Log.d(TAG, "Navigated to last non-Ultai destination: " + lastNonUltaiDestination);
+                    } else {
+                        // Если не удалось получить предыдущую страницу, используем стандартную навигацию
+                        Log.d(TAG, "Using standard navigation back");
+                        boolean navigatedUp = navController.navigateUp();
+                        Log.d(TAG, "NavigateUp result: " + navigatedUp);
+                        
+                        if (!navigatedUp) {
+                            getActivity().onBackPressed();
+                        }
+                    }
+                } catch (Exception e) {
+                    Log.e(TAG, "Error handling back navigation: " + e.getMessage());
+                    getActivity().onBackPressed();
+                }
+            } else {
+                Log.w(TAG, "Activity is null or not MainActivity");
             }
         });
 

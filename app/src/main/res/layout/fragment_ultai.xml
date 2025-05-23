@@ -15,7 +15,9 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/strelka2"
         android:padding="8dp"
-        android:src="@drawable/ic_arrow_back"
+        android:clickable="true"
+        android:focusable="true"
+        android:contentDescription="Назад"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="?attr/colorControlNormal" />

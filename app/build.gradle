@@ -16,6 +16,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        renderscriptTargetApi 24
+        renderscriptSupportModeEnabled true
     }
 
     buildTypes {
@@ -25,8 +27,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     buildFeatures {
         viewBinding true // Включаем ViewBinding, т.к. исходный проект не использовал Compose
@@ -34,6 +36,7 @@ android {
 }
 
 dependencies {
+
     // Firebase BOM (управляет версиями библиотек Firebase)
     implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
 

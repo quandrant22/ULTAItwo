@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private Set<Integer> topLevelDestinations = new HashSet<>();
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private int lastNonUltaiDestination = R.id.navigation_home; // Отслеживаем последнюю страницу перед ultai
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +101,16 @@ public class MainActivity extends AppCompatActivity {
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
             int destId = destination.getId();
             Log.d(TAG, "Navigated to destination: " + destination.getDisplayName() + " (ID: " + destId + ")");
+
+            // Отслеживаем предыдущую страницу перед переходом к Ultai
+            if (destId == R.id.navigation_ultai) {
+                // Если переходим к Ultai, lastNonUltaiDestination уже содержит предыдущую страницу
+                Log.d(TAG, "Navigated to Ultai, keeping last non-Ultai destination: " + lastNonUltaiDestination);
+            } else {
+                // Если переходим НЕ к Ultai, обновляем последнюю не-Ultai страницу
+                lastNonUltaiDestination = destId;
+                Log.d(TAG, "Updated last non-Ultai destination: " + destId);
+            }
 
             // Получаем родительский граф текущего destination
             NavGraph parentGraph = destination.getParent();
@@ -316,20 +327,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showNavigationBar() {
-        Log.d(TAG, "Showing Navigation Bar");
-        BottomNavigationView navView = binding.navView;
-        isNavBarVisible = true;
-        
-        // Восстанавливаем параметры макета перед показом
-        ViewGroup.LayoutParams layoutParams = navView.getLayoutParams();
-        if (layoutParams instanceof ViewGroup.MarginLayoutParams) {
-            ViewGroup.MarginLayoutParams marginParams = (ViewGroup.MarginLayoutParams) layoutParams;
-            marginParams.height = ViewGroup.LayoutParams.WRAP_CONTENT; // или явное значение высоты в dp
-            navView.setLayoutParams(marginParams);
+        if (isNavBarVisibleForDestination) {
+            isNavBarVisible = true;
+            binding.navView.setVisibility(View.VISIBLE);
+            binding.navView.setEnabled(true);
+            
+            // Восстанавливаем высоту navigation bar
+            ViewGroup.LayoutParams layoutParams = binding.navView.getLayoutParams();
+            if (layoutParams instanceof ViewGroup.MarginLayoutParams) {
+                ViewGroup.MarginLayoutParams marginParams = (ViewGroup.MarginLayoutParams) layoutParams;
+                marginParams.height = (int) getResources().getDimension(R.dimen.bottom_nav_height);
+                binding.navView.setLayoutParams(marginParams);
+            }
+            
+            Log.d(TAG, "Showing Navigation Bar");
+        } else {
+            Log.d(TAG, "Not showing Navigation Bar (not visible for this destination)");
         }
-        
-        navView.setEnabled(true);
-        navView.setVisibility(View.VISIBLE);
     }
 
     private void setupKeyboardListener() {
@@ -345,5 +359,9 @@ public class MainActivity extends AppCompatActivity {
             }
             return windowInsets;
         });
+    }
+
+    public int getLastNonUltaiDestination() {
+        return lastNonUltaiDestination;
     }
 }

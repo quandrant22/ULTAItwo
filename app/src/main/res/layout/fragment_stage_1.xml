@@ -801,7 +801,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp">
-            
+
             <!-- Анкета Этапа 1 -->
             <TextView
                 android:layout_width="wrap_content"
@@ -812,7 +812,7 @@
                 android:textStyle="bold"
                 android:fontFamily="@font/exo2_0_medium"
                 android:layout_marginBottom="8dp"/>
-            
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -821,7 +821,7 @@
                 android:textSize="14sp"
                 android:fontFamily="@font/exo2_0_light"
                 android:layout_marginBottom="16dp"/>
-            
+
             <!-- Возраст -->
             <TextView
                 android:layout_width="match_parent"
@@ -831,14 +831,14 @@
                 android:textSize="16sp"
                 android:fontFamily="@font/exo2_0_medium"
                 android:layout_marginBottom="12dp"/>
-                
+
             <RadioGroup
                 android:id="@+id/radioGroupAge"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginBottom="16dp">
-                
+
                 <RadioButton
                     android:id="@+id/radioAge18_24"
                     android:layout_width="match_parent"
@@ -846,7 +846,7 @@
                     android:text="18-24 года"
                     android:textColor="@color/beige"
                     android:buttonTint="@color/blue"/>
-                    
+
                 <RadioButton
                     android:id="@+id/radioAge25_34"
                     android:layout_width="match_parent"
@@ -854,7 +854,7 @@
                     android:text="25-34 года"
                     android:textColor="@color/beige"
                     android:buttonTint="@color/blue"/>
-                    
+
                 <RadioButton
                     android:id="@+id/radioAge35_44"
                     android:layout_width="match_parent"
@@ -862,7 +862,7 @@
                     android:text="35-44 года"
                     android:textColor="@color/beige"
                     android:buttonTint="@color/blue"/>
-                    
+
                 <RadioButton
                     android:id="@+id/radioAge45_54"
                     android:layout_width="match_parent"
@@ -870,7 +870,7 @@
                     android:text="45-54 года"
                     android:textColor="@color/beige"
                     android:buttonTint="@color/blue"/>
-                    
+
                 <RadioButton
                     android:id="@+id/radioAge55Plus"
                     android:layout_width="match_parent"
@@ -879,7 +879,7 @@
                     android:textColor="@color/beige"
                     android:buttonTint="@color/blue"/>
             </RadioGroup>
-            
+
             <!-- Семейное положение -->
             <TextView
                 android:layout_width="match_parent"
@@ -889,14 +889,14 @@
                 android:textSize="16sp"
                 android:fontFamily="@font/exo2_0_medium"
                 android:layout_marginBottom="12dp"/>
-                
+
             <RadioGroup
                 android:id="@+id/radioGroupFamily"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginBottom="16dp">
-                
+
                 <RadioButton
                     android:id="@+id/radioFamilySingle"
                     android:layout_width="match_parent"
@@ -904,7 +904,7 @@
                     android:text="Не замужем/Не женаты"
                     android:textColor="@color/beige"
                     android:buttonTint="@color/blue"/>
-                    
+
                 <RadioButton
                     android:id="@+id/radioFamilyMarried"
                     android:layout_width="match_parent"
@@ -912,7 +912,7 @@
                     android:text="Замужем/Женаты"
                     android:textColor="@color/beige"
                     android:buttonTint="@color/blue"/>
-                    
+
                 <RadioButton
                     android:id="@+id/radioFamilyDivorced"
                     android:layout_width="match_parent"
@@ -921,7 +921,7 @@
                     android:textColor="@color/beige"
                     android:buttonTint="@color/blue"/>
             </RadioGroup>
-            
+
             <!-- Наличие детей -->
             <TextView
                 android:layout_width="match_parent"
@@ -931,14 +931,14 @@
                 android:textSize="16sp"
                 android:fontFamily="@font/exo2_0_medium"
                 android:layout_marginBottom="12dp"/>
-                
+
             <RadioGroup
                 android:id="@+id/radioGroupChildren"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginBottom="16dp">
-                
+
                 <RadioButton
                     android:id="@+id/radioChildrenNone"
                     android:layout_width="match_parent"
@@ -946,7 +946,7 @@
                     android:text="Нет детей"
                     android:textColor="@color/beige"
                     android:buttonTint="@color/blue"/>
-                    
+
                 <RadioButton
                     android:id="@+id/radioChildren1"
                     android:layout_width="match_parent"
@@ -954,7 +954,7 @@
                     android:text="1 ребенок"
                     android:textColor="@color/beige"
                     android:buttonTint="@color/blue"/>
-                    
+
                 <RadioButton
                     android:id="@+id/radioChildren2_3"
                     android:layout_width="match_parent"
@@ -963,7 +963,7 @@
                     android:textColor="@color/beige"
                     android:buttonTint="@color/blue"/>
             </RadioGroup>
-            
+
             <!-- Географическое местоположение -->
             <TextView
                 android:layout_width="match_parent"
@@ -973,21 +973,21 @@
                 android:textSize="16sp"
                 android:fontFamily="@font/exo2_0_medium"
                 android:layout_marginBottom="12dp"/>
-                
+
             <Spinner
                 android:id="@+id/spinnerCity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/blue"
                 android:layout_marginBottom="8dp"/>
-                
+
             <Spinner
                 android:id="@+id/spinnerRegion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/blue"
                 android:layout_marginBottom="8dp"/>
-                
+
             <EditText
                 android:id="@+id/editTextCustomLocation"
                 android:layout_width="match_parent"
@@ -997,7 +997,7 @@
                 android:textColor="@color/beige"
                 android:backgroundTint="@color/blue"
                 android:layout_marginBottom="16dp"/>
-            
+
             <!-- Кнопка завершения шага -->
             <Button
                 android:id="@+id/buttonFinishStep1"

@@ -27,5 +27,8 @@
         <item name="android:background">@color/gray</item>
         <item name="android:elevation">8dp</item>
     </style>
+    <style name="BottomStyleLogIn" parent="Widget.MaterialComponents.Button">
+        <item name="android:background">@drawable/group_11</item>
+    </style>
 
 </resources>

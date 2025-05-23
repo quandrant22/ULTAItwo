@@ -23,7 +23,7 @@
         android:id="@+id/title_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="100dp"
         android:text="@string/app_name"
         android:textColor="@color/white"
         android:textSize="24sp"
@@ -68,7 +68,8 @@
                 android:inputType="textPersonName"
                 android:padding="12dp"
                 android:textColor="@color/white"
-                android:textColorHint="@color/hint_color" />
+                android:textColorHint="@color/hint_color"
+                />
 
             <EditText
                 android:id="@+id/email_edit_text"
@@ -130,15 +131,20 @@
                 android:textColor="@color/white"
                 android:textColorHint="@color/hint_color" />
 
-            <Button
+            <TextView
                 android:id="@+id/register_button"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="59dp"
                 android:layout_marginTop="24dp"
-                android:background="@color/blue"
-                android:padding="12dp"
-                android:text="Зарегистрироваться"
-                android:textColor="@color/white" />
+                android:background="@drawable/sing_up"
+                android:text="Sign Up"
+                android:textColor="@color/dark_gray"
+                android:fontFamily="@font/shriftovik_sk_concretica"
+                android:textSize="25dp"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"/>
 
             <TextView
                 android:id="@+id/login_text_view"
