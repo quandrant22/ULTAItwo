@@ -136,6 +136,13 @@
         <action
             android:id="@+id/action_navigation_planer_to_plannerQuestionnaireFragment"
             app:destination="@id/plannerQuestionnaireFragment" />
+        <action
+            android:id="@+id/action_navigation_planer_to_businessGoalFragment"
+            app:destination="@id/businessGoalFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -729,6 +736,22 @@
         <action
             android:id="@+id/action_plannerQuestionnaireFragment_to_businessGoalFragment"
             app:destination="@id/planner_nav_graph" />
+    </fragment>
+
+    <!-- Прямая ссылка на первый вопрос анкеты планера -->
+    <fragment
+        android:id="@+id/businessGoalFragment"
+        android:name="com.example.ultai.planner_questionnaire.BusinessGoalFragment"
+        android:label="Цель бизнеса"
+        tools:layout="@layout/fragment_planner_business_goal">
+        <action
+            android:id="@+id/action_businessGoalFragment_to_planner_nav_graph"
+            app:destination="@id/planner_nav_graph" />
+        <action
+            android:id="@+id/action_businessGoalFragment_to_navigation_planer"
+            app:destination="@id/navigation_planer"
+            app:popUpTo="@id/navigation_planer"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <!-- Включаем граф навигации для анкеты планера -->

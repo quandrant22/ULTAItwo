@@ -211,7 +211,7 @@ public class NewsParserAdapter {
                                     item.getUrl(),
                                     source,
                                     item.getTimestamp(),
-                                    item.getImageUrl()
+                                    getValidImageUrl(item.getImageUrl())
                             );
                             
                             // Устанавливаем дату публикации
@@ -287,16 +287,32 @@ public class NewsParserAdapter {
      * Добавляет заглушки новостей, если не удалось получить достаточное количество
      */
     private void addPlaceholderNews(List<NewsItem> news, int count) {
+        // Массив стоковых изображений для новостей
+        String[] stockImages = {
+            "https://via.placeholder.com/400x200/2196F3/FFFFFF?text=Новости",
+            "https://via.placeholder.com/400x200/4CAF50/FFFFFF?text=Экономика", 
+            "https://via.placeholder.com/400x200/FF9800/FFFFFF?text=Технологии",
+            "https://via.placeholder.com/400x200/9C27B0/FFFFFF?text=Бизнес",
+            "https://via.placeholder.com/400x200/F44336/FFFFFF?text=События",
+            "https://via.placeholder.com/400x200/00BCD4/FFFFFF?text=Мир"
+        };
+        
         for (int i = 0; i < count; i++) {
             NewsItem item = new NewsItem();
             item.setTitle("Актуальные новости #" + (i + 1));
             item.setDescription("Загрузка новостей временно недоступна. Пожалуйста, проверьте подключение к интернету или повторите попытку позже.");
-            item.setUrlToImage(""); // Пустая ссылка на изображение
+            
+            // Выбираем случайное изображение из массива
+            String imageUrl = stockImages[i % stockImages.length];
+            item.setUrlToImage(imageUrl);
             
             // Создаем источник
             NewsItem.Source source = new NewsItem.Source();
             source.setName("Локальный источник");
             item.setSource(source);
+            
+            // Устанавливаем дату публикации
+            item.setPublishedAt(new Date());
             
             // Сохраняем оригинальное описание
             item.setOriginalDescription(item.getDescription());
@@ -372,12 +388,15 @@ public class NewsParserAdapter {
             NewsItem item = new NewsItem();
             item.setTitle(parsedItem.getTitle());
             item.setDescription(parsedItem.getDescription());
-            item.setUrlToImage(parsedItem.getImageUrl());
+            item.setUrlToImage(getValidImageUrl(parsedItem.getImageUrl()));
             
             // Создаем источник (используем вложенный класс NewsItem.Source)
             NewsItem.Source source = new NewsItem.Source();
             source.setName(parsedItem.getSource());
             item.setSource(source);
+            
+            // Устанавливаем дату публикации
+            item.setPublishedAt(parsedItem.getTimestamp());
             
             // Сохраняем оригинальное описание
             item.setOriginalDescription(parsedItem.getDescription());
@@ -447,5 +466,42 @@ public class NewsParserAdapter {
         if (executorService != null && !executorService.isShutdown()) {
             executorService.shutdown();
         }
+    }
+
+    /**
+     * Проверяет и возвращает корректный URL изображения
+     * @param imageUrl исходный URL изображения
+     * @return корректный URL изображения или резервный URL
+     */
+    private String getValidImageUrl(String imageUrl) {
+        // Массив стоковых изображений для новостей
+        String[] stockImages = {
+            "https://via.placeholder.com/400x200/2196F3/FFFFFF?text=Новости",
+            "https://via.placeholder.com/400x200/4CAF50/FFFFFF?text=Экономика", 
+            "https://via.placeholder.com/400x200/FF9800/FFFFFF?text=Технологии",
+            "https://via.placeholder.com/400x200/9C27B0/FFFFFF?text=Бизнес",
+            "https://via.placeholder.com/400x200/F44336/FFFFFF?text=События",
+            "https://via.placeholder.com/400x200/00BCD4/FFFFFF?text=Мир"
+        };
+        
+        // Если URL пустой или null, возвращаем случайное стоковое изображение
+        if (imageUrl == null || imageUrl.trim().isEmpty()) {
+            int randomIndex = (int) (Math.random() * stockImages.length);
+            return stockImages[randomIndex];
+        }
+        
+        // Исправляем URL, если он начинается с //
+        if (imageUrl.startsWith("//")) {
+            return "https:" + imageUrl;
+        }
+        
+        // Если URL не начинается с http/https, считаем его некорректным
+        if (!imageUrl.startsWith("http://") && !imageUrl.startsWith("https://")) {
+            int randomIndex = (int) (Math.random() * stockImages.length);
+            return stockImages[randomIndex];
+        }
+        
+        // URL корректный, возвращаем как есть
+        return imageUrl;
     }
 } 

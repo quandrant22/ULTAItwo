@@ -37,15 +37,36 @@
 
         <TextView
             android:id="@+id/subtitleTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Пожалуйста, пройдите анкету"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="Пожалуйста, заполните анкету для настройки персонализированного контента приложения"
             android:textColor="@color/white"
             android:textSize="16sp"
+            android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/titleTextView" />
+
+        <!-- Индикатор прогресса -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:max="100"
+            android:progress="0"
+            android:progressTint="@color/blue"
+            android:progressBackgroundTint="@color/gray"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/subtitleTextView" />
 
         <View
             android:id="@+id/divider"
@@ -57,7 +78,7 @@
             android:background="@color/blue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/subtitleTextView" />
+            app:layout_constraintTop_toBottomOf="@id/progressBar" />
 
         <LinearLayout
             android:id="@+id/questionLayout"

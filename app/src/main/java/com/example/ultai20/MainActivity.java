@@ -119,17 +119,19 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, "Is in planner graph: " + isInPlannerGraph + ", Parent graph ID: " + 
                        (parentGraph != null ? parentGraph.getId() : "null"));
 
-            if (isInPlannerGraph || // Скрываем для всех экранов анкеты
+            if (isInPlannerGraph || // Скрываем для всех экранов анкеты планера
                     destId == R.id.registrationFragment ||
                     destId == R.id.signInFragment ||
                     destId == R.id.firstFragment ||
                     destId == R.id.basicQuestionnaireFragment ||
-                    destId == R.id.plannerQuestionnaireFragment) { // Также скрываем для начальной страницы анкеты
+                    destId == R.id.plannerQuestionnaireFragment) { // Также скрываем для промежуточной страницы анкеты
                 isNavBarVisibleForDestination = false;
                 hideNavigationBar();
                 
-                // Дополнительная задержка для надежного скрытия
-                new Handler(Looper.getMainLooper()).postDelayed(this::hideNavigationBar, 100);
+                // Дополнительная задержка для надежного скрытия при анкете планера
+                if (isInPlannerGraph) {
+                    new Handler(Looper.getMainLooper()).postDelayed(this::hideNavigationBar, 50);
+                }
             } else {
                 isNavBarVisibleForDestination = true;
                 showNavigationBar();

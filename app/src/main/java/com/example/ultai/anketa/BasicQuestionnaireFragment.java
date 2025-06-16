@@ -43,7 +43,11 @@ public class BasicQuestionnaireFragment extends Fragment {
         viewModel = new ViewModelProvider(requireActivity()).get(BasicQuestionnaireViewModel.class);
         navController = Navigation.findNavController(view);
         
+        // Показываем приветственное сообщение для новых пользователей
+        Toast.makeText(getContext(), "Добро пожаловать! Пожалуйста, заполните базовую анкету для настройки приложения", Toast.LENGTH_LONG).show();
+        
         binding.backButton.setOnClickListener(v -> {
+            // При нажатии назад из анкеты нового пользователя возвращаемся к экрану входа
             if (navController.popBackStack() == false) {
                  if (getActivity() != null) {
                     getActivity().onBackPressed();
@@ -52,41 +56,22 @@ public class BasicQuestionnaireFragment extends Fragment {
         });
         
         initializeSpinners();
-        setupRadioButtons();
         
         binding.finishButton.setOnClickListener(v -> {
             if (validateForm()) {
+                // Показываем индикатор загрузки и прогресс
+                binding.finishButton.setEnabled(false);
+                binding.finishButton.setText("Сохранение...");
+                binding.progressBar.setVisibility(View.VISIBLE);
+                binding.progressBar.setProgress(100);
                 collectAndSaveQuestionnaireData();
             }
         });
+        
+        // Настраиваем обновление прогресса при заполнении полей
+        setupProgressTracking();
     }
     
-    private void setupRadioButtons() {
-        binding.planningRadioButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                binding.launchedRadioButton.setChecked(false);
-            }
-        });
-        
-        binding.launchedRadioButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                binding.planningRadioButton.setChecked(false);
-            }
-        });
-        
-        binding.goodsRadioButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                binding.servicesRadioButton.setChecked(false);
-            }
-        });
-        
-        binding.servicesRadioButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                binding.goodsRadioButton.setChecked(false);
-            }
-        });
-    }
-
     private void initializeSpinners() {
         List<String> countries = new ArrayList<>(Arrays.asList("Выберите страну", "Россия", "Казахстан", "Беларусь", "Украина"));
         
@@ -194,7 +179,13 @@ public class BasicQuestionnaireFragment extends Fragment {
             @Override
             public void onSuccess() {
                 if (isAdded() && getActivity() != null) {
-                    Toast.makeText(getContext(), getString(R.string.message_questionnaire_saved), Toast.LENGTH_SHORT).show();
+                    // Восстанавливаем состояние кнопки
+                    binding.finishButton.setEnabled(true);
+                    binding.finishButton.setText("Завершить");
+                    
+                    Toast.makeText(getContext(), "Анкета успешно сохранена! Добро пожаловать в ULTAI", Toast.LENGTH_LONG).show();
+                    
+                    // Переходим на главный экран после успешного сохранения
                     if (navController != null) {
                         navController.navigate(R.id.action_basicQuestionnaireFragment_to_navigation_home);
                     }
@@ -204,10 +195,118 @@ public class BasicQuestionnaireFragment extends Fragment {
             @Override
             public void onError(String errorMessage) {
                 if (isAdded() && getActivity() != null) {
-                    Toast.makeText(getContext(), getString(R.string.error_saving_questionnaire, errorMessage), Toast.LENGTH_LONG).show();
+                    // Восстанавливаем состояние кнопки
+                    binding.finishButton.setEnabled(true);
+                    binding.finishButton.setText("Завершить");
+                    
+                    Toast.makeText(getContext(), "Ошибка сохранения анкеты: " + errorMessage, Toast.LENGTH_LONG).show();
                 }
             }
         });
+    }
+
+    private void setupProgressTracking() {
+        // Массив для отслеживания заполненных полей
+        android.text.TextWatcher textWatcher = new android.text.TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            @Override
+            public void afterTextChanged(android.text.Editable s) {
+                updateProgress();
+            }
+        };
+        
+        binding.companyNameEditText.addTextChangedListener(textWatcher);
+        binding.servicesDescriptionEditText.addTextChangedListener(textWatcher);
+        
+        android.widget.AdapterView.OnItemSelectedListener spinnerListener = new android.widget.AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(android.widget.AdapterView<?> parent, View view, int position, long id) {
+                updateProgress();
+            }
+
+            @Override
+            public void onNothingSelected(android.widget.AdapterView<?> parent) {}
+        };
+        
+        binding.countrySpinner.setOnItemSelectedListener(spinnerListener);
+        binding.countryImplementationSpinner.setOnItemSelectedListener(spinnerListener);
+        binding.citySpinner.setOnItemSelectedListener(spinnerListener);
+        
+        binding.planningRadioButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                binding.launchedRadioButton.setChecked(false);
+                updateProgress();
+            }
+        });
+        
+        binding.launchedRadioButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                binding.planningRadioButton.setChecked(false);
+                updateProgress();
+            }
+        });
+        
+        binding.goodsRadioButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                binding.servicesRadioButton.setChecked(false);
+                updateProgress();
+            }
+        });
+        
+        binding.servicesRadioButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                binding.goodsRadioButton.setChecked(false);
+                updateProgress();
+            }
+        });
+        
+        // Изначально показываем прогресс-бар
+        binding.progressBar.setVisibility(View.VISIBLE);
+        updateProgress();
+    }
+    
+    private void updateProgress() {
+        int filledFields = 0;
+        int totalFields = 6; // Общее количество полей для заполнения
+        
+        // Проверяем название компании
+        if (!binding.companyNameEditText.getText().toString().trim().isEmpty()) {
+            filledFields++;
+        }
+        
+        // Проверяем состояние бизнеса
+        if (binding.planningRadioButton.isChecked() || binding.launchedRadioButton.isChecked()) {
+            filledFields++;
+        }
+        
+        // Проверяем страну
+        if (binding.countrySpinner.getSelectedItemPosition() > 0) {
+            filledFields++;
+        }
+        
+        // Проверяем тип деятельности
+        if (binding.goodsRadioButton.isChecked() || binding.servicesRadioButton.isChecked()) {
+            filledFields++;
+        }
+        
+        // Проверяем описание услуг
+        if (!binding.servicesDescriptionEditText.getText().toString().trim().isEmpty()) {
+            filledFields++;
+        }
+        
+        // Проверяем географию (страна + город)
+        if (binding.countryImplementationSpinner.getSelectedItemPosition() > 0 && 
+            binding.citySpinner.getSelectedItemPosition() > 0) {
+            filledFields++;
+        }
+        
+        int progress = (filledFields * 100) / totalFields;
+        binding.progressBar.setProgress(progress);
     }
 
     @Override

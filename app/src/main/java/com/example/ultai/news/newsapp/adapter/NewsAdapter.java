@@ -118,13 +118,22 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
             return;
         }
         
+        // Массив резервных изображений для новостей без картинок
+        int[] fallbackImages = {
+            R.drawable.news1, R.drawable.news2, R.drawable.news3
+        };
+        
         try {
             // Проверяем URL изображения
             if (TextUtils.isEmpty(imageUrl)) {
-                Log.d(TAG, "loadImage: URL пустой, показываем заглушку");
-                // Если URL пустой, показываем заглушку
+                Log.d(TAG, "loadImage: URL пустой, показываем резервное изображение");
+                // Если URL пустой, показываем случайное резервное изображение
+                int randomIndex = (int) (Math.random() * fallbackImages.length);
                 Glide.with(context)
-                        .load(R.drawable.placeholder)
+                        .load(fallbackImages[randomIndex])
+                        .apply(new RequestOptions()
+                                .placeholder(R.drawable.placeholder)
+                                .centerCrop())
                         .into(imageView);
                 return;
             }
@@ -135,9 +144,13 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
                 Log.d(TAG, "loadImage: исправлен URL изображения: " + imageUrl);
             } else if (!imageUrl.startsWith("http://") && !imageUrl.startsWith("https://")) {
                 Log.d(TAG, "loadImage: некорректный URL изображения: " + imageUrl);
-                // Показываем заглушку для некорректного URL
+                // Показываем резервное изображение для некорректного URL
+                int randomIndex = (int) (Math.random() * fallbackImages.length);
                 Glide.with(context)
-                        .load(R.drawable.placeholder)
+                        .load(fallbackImages[randomIndex])
+                        .apply(new RequestOptions()
+                                .placeholder(R.drawable.placeholder)
+                                .centerCrop())
                         .into(imageView);
                 return;
             }
@@ -145,9 +158,10 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
             // Настраиваем параметры загрузки
             RequestOptions options = new RequestOptions()
                     .placeholder(R.drawable.placeholder)
-                    .error(R.drawable.error)
+                    .error(fallbackImages[(int) (Math.random() * fallbackImages.length)]) // Показываем резервное изображение при ошибке
                     .diskCacheStrategy(DiskCacheStrategy.ALL) // Кэшируем изображения
-                    .centerCrop(); // Обрезаем изображение по центру
+                    .centerCrop() // Обрезаем изображение по центру
+                    .timeout(10000); // Устанавливаем таймаут 10 секунд
 
             // Загружаем изображение
             Glide.with(context)
@@ -158,13 +172,23 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
             Log.d(TAG, "loadImage: начата загрузка изображения: " + imageUrl);
         } catch (Exception e) {
             Log.e(TAG, "Ошибка при загрузке изображения: " + imageUrl, e);
-            // В случае ошибки показываем заглушку
+            // В случае ошибки показываем резервное изображение
             try {
+                int randomIndex = (int) (Math.random() * fallbackImages.length);
                 Glide.with(context)
-                        .load(R.drawable.error)
+                        .load(fallbackImages[randomIndex])
+                        .apply(new RequestOptions()
+                                .placeholder(R.drawable.placeholder)
+                                .centerCrop())
                         .into(imageView);
             } catch (Exception ex) {
-                Log.e(TAG, "Ошибка при загрузке заглушки", ex);
+                Log.e(TAG, "Ошибка при загрузке резервного изображения", ex);
+                // Последняя попытка - показать простую заглушку
+                try {
+                    imageView.setImageResource(R.drawable.placeholder);
+                } catch (Exception finalEx) {
+                    Log.e(TAG, "Критическая ошибка при установке изображения", finalEx);
+                }
             }
         }
     }

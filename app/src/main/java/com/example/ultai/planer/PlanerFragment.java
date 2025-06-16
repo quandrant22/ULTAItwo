@@ -85,28 +85,27 @@ public class PlanerFragment extends Fragment {
 
                 if (exists) {
                     Log.d(TAG, "Planner questionnaire EXISTS for user: " + userId + ". Staying on PlanerFragment.");
+                    // Анкета уже пройдена, остаемся на экране планера
                 } else {
                     Log.d(TAG, "Planner questionnaire DOES NOT EXIST for user: " + userId + ". Navigating to questionnaire.");
+                    
+                    // Показываем сообщение пользователю о необходимости заполнить анкету
+                    Toast.makeText(getContext(), "Для использования планера необходимо заполнить анкету", Toast.LENGTH_LONG).show();
+                    
                     try {
-                        if (navController.getCurrentDestination() != null && navController.getCurrentDestination().getId() == R.id.navigation_planer) {
-                            navController.navigate(R.id.action_navigation_planer_to_plannerQuestionnaireFragment);
-                            
-                            // Добавим задержку для перехода в граф анкеты после загрузки промежуточного фрагмента
-                            new Handler().postDelayed(() -> {
-                                try {
-                                    if (navController.getCurrentDestination() != null && 
-                                        navController.getCurrentDestination().getId() == R.id.plannerQuestionnaireFragment) {
-                                        // Переходим к BusinessGoalFragment, который находится в planner_nav_graph
-                                        navController.navigate(R.id.action_plannerQuestionnaireFragment_to_businessGoalFragment);
-                                    }
-                                } catch (Exception e) {
-                                    Log.e(TAG, "Navigation to businessGoalFragment from plannerQuestionnaireFragment failed", e);
-                                }
-                            }, 100); // Небольшая задержка для завершения первого перехода
+                        if (navController.getCurrentDestination() != null && 
+                            navController.getCurrentDestination().getId() == R.id.navigation_planer) {
+                            // Переходим напрямую к первому вопросу анкеты планера
+                            navController.navigate(R.id.action_navigation_planer_to_businessGoalFragment);
                         }
                     } catch (Exception e) {
-                        Log.e(TAG, "Navigation to plannerQuestionnaireFragment failed", e);
-                        Toast.makeText(getContext(), "Не удалось открыть анкету планировщика.", Toast.LENGTH_SHORT).show();
+                        Log.e(TAG, "Navigation to businessGoalFragment failed", e);
+                        // Fallback - переходим через промежуточный фрагмент
+                        try {
+                            navController.navigate(R.id.action_navigation_planer_to_plannerQuestionnaireFragment);
+                        } catch (Exception fallbackE) {
+                            Log.e(TAG, "Fallback navigation also failed", fallbackE);
+                        }
                     }
                 }
             }
@@ -115,7 +114,7 @@ public class PlanerFragment extends Fragment {
             public void onError(String message) {
                 if (!isAdded()) return;
                 Log.e(TAG, "Error checking planner questionnaire: " + message);
-                Toast.makeText(getContext(), "Ошибка проверки анкеты: " + message, Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Ошибка при проверке анкеты: " + message, Toast.LENGTH_SHORT).show();
             }
         });
     }

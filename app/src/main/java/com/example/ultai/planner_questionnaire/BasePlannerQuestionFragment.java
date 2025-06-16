@@ -64,6 +64,16 @@ public abstract class BasePlannerQuestionFragment extends Fragment {
         toAiChatButton = view.findViewById(R.id.button_to_ai_chat);
         
         titleTextView.setText(getPageTitle());
+        
+        // Показываем информационное сообщение для первого вопроса анкеты планера
+        if (getPreviousFragmentId() == 0) {
+            // Это первый вопрос анкеты планера
+            if (getActivity() != null) {
+                android.widget.Toast.makeText(getActivity(), 
+                    "Анкета планера поможет настроить персональные рекомендации для вашего бизнеса", 
+                    android.widget.Toast.LENGTH_LONG).show();
+            }
+        }
 
         if (getNextFragmentId() != 0) {
             nextButton.setOnClickListener(v -> {

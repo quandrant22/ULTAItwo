@@ -44,18 +44,6 @@ public class BusinessGoalFragment extends BasePlannerQuestionFragment {
         }
     }
 
-    /* Раскомментируем, когда будет готова логика сохранения
-    @Override
-    protected void saveData() {
-        String goal = businessGoalEditText.getText().toString();
-        String userId = FirebaseAuth.getInstance().getCurrentUser() != null ? FirebaseAuth.getInstance().getCurrentUser().getUid() : null;
-        if (userId != null && !goal.isEmpty()) {
-            // UserRepository.getInstance().savePlannerData(userId, "businessGoal", goal, callback...);
-            // TODO: Implement saving
-        }
-    }
-    */
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
